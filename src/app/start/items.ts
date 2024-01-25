@@ -4,16 +4,16 @@ const items = [
     label: "Salary",
   },
   {
-    id: "security",
-    label: "Security",
-  },
-  {
-    id: "col",
+    id: "cost-of-living",
     label: "Cost of living",
   },
   {
-    id: "mpps",
+    id: "median-purchasing-power",
     label: "Median purchasing power",
+  },
+  {
+    id: "gdp",
+    label: "GDP",
   },
 ] as const;
 

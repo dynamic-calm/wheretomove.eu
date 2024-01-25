@@ -23,11 +23,17 @@ const FormSchema = z.object({
   }),
 });
 
-export function CheckBoxForm() {
+export function CheckBoxForm({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      items: ["salary", "home"],
+      items: ["salary"],
     },
   });
 
@@ -52,10 +58,8 @@ export function CheckBoxForm() {
           render={() => (
             <FormItem>
               <div className="mb-4">
-                <FormLabel className="text-base">What matters</FormLabel>
-                <FormDescription>
-                  Select the things you value the most.
-                </FormDescription>
+                <FormLabel className="text-base">{title}</FormLabel>
+                <FormDescription>{description}</FormDescription>
               </div>
               {items.map((item) => (
                 <FormField
