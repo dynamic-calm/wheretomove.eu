@@ -14,7 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "@/components/ui/use-toast";
-
+import { useRouter } from "next/navigation";
 import items from "@/app/start/items";
 
 const FormSchema = z.object({
@@ -30,6 +30,8 @@ export function CheckBoxForm({
   title: string;
   description: string;
 }) {
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -37,16 +39,17 @@ export function CheckBoxForm({
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log("here");
+  function onSubmit({ items }: z.infer<typeof FormSchema>) {
     toast({
       title: "You submitted the following values:",
       description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+        <pre className="mt-2 w-[340px] rounded-md bg-neutral-950 p-4">
+          <code className="text-white">{JSON.stringify(items, null, 2)}</code>
         </pre>
       ),
     });
+
+    router.push(`/result?items=${JSON.stringify(items)}`);
   }
 
   return (

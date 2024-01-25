@@ -7,9 +7,9 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header>
-      <div className="flex min-w-max cursor-pointer items-center justify-between p-4">
+      <div className="flex min-w-max items-center justify-between p-2">
         <Link href="/">
-          <div className="flex items-center">
+          <div className="flex cursor-pointer items-center ">
             <Image
               className="hidden dark:block"
               src={euLight}
@@ -26,7 +26,7 @@ export default function Header() {
               width={40}
               alt="eu stars"
             />
-            <h1 className="font-bold">wheretomove.eu</h1>
+            <h1 className="pl-1 font-semibold">wheretomove.eu</h1>
           </div>
         </Link>
         <ModeToggle />

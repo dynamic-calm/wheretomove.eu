@@ -1,18 +1,23 @@
+const SALARY_ID = "salary";
+const COST_OF_LIVING_ID = "cost-of-living";
+const MEDIAN_PURCHASING_POWER_ID = "median-purchasing-power";
+const GDP_ID = "gdp";
+
 const items = [
   {
-    id: "salary",
+    id: SALARY_ID,
     label: "Salary",
   },
   {
-    id: "cost-of-living",
+    id: COST_OF_LIVING_ID,
     label: "Cost of living",
   },
   {
-    id: "median-purchasing-power",
+    id: MEDIAN_PURCHASING_POWER_ID,
     label: "Median purchasing power",
   },
   {
-    id: "gdp",
+    id: GDP_ID,
     label: "GDP",
   },
 ] as const;
