@@ -1,9 +1,14 @@
-import Image from "next/image";
-
-export default function Home() {
+export default function Home({}) {
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <h1>Welcome!</h1>
+    <main className="flex min-h-screen flex-col items-center justify-center">
+      <div className="flex flex-col items-center px-10 text-center md:w-2/3">
+        <h2 className="text-4xl font-semibold">
+          Discover your ideal country based on data-driven decision making.
+        </h2>
+        <h3 className="py-5 text-xl">
+          Embark on a journey of informed choices.
+        </h3>
+      </div>
     </main>
   );
 }
