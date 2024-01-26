@@ -15,7 +15,7 @@ export default function Home() {
       </div>
       <Link href="/start">
         <Button>
-          <p className="pr-2">Start exploring</p> <ArrowRightIcon />
+          <p className="pr-2">Start</p> <ArrowRightIcon />
         </Button>
       </Link>
     </main>

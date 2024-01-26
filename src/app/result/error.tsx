@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
-import Link from "next/link";
+
 export default function Error({
   error,
   reset,

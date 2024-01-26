@@ -1,7 +1,7 @@
 import { z } from "zod";
+import { Ids } from "@/config";
 import { publicProcedure, router } from "./init";
 import QUERIES from "./queries";
-import { Ids } from "@/config";
 
 export const appRouter = router({
   getData: publicProcedure

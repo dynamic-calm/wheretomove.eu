@@ -1,5 +1,5 @@
 import JSONstat from "jsonstat-toolkit";
-import { COUNTRIES, IDS, Ids } from "@/config";
+import { COUNTRIES, IDS, type Ids } from "@/config";
 
 interface Item {
   country: string;
