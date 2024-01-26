@@ -1,15 +1,11 @@
 export const IDS = {
   SALARY: "salary",
-  COST_OF_LIVING: "cost-of-living",
-  MEDIAN_PURCHASING_POWER: "median-purchasing-power",
-  GDP: "gdp",
+  UNEMPLOYMENT: "unemployment",
 } as const;
 
 export const CHECKBOX_ITEMS = new Map([
   [IDS.SALARY, "Salary"],
-  [IDS.COST_OF_LIVING, "Cost of living"],
-  [IDS.MEDIAN_PURCHASING_POWER, "Median purchasing power"],
-  [IDS.GDP, "GDP"],
+  [IDS.UNEMPLOYMENT, "Unemployment"],
 ]);
 
 export type Ids = typeof IDS[keyof typeof IDS];

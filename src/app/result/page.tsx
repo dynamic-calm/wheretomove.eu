@@ -14,11 +14,11 @@ export default async function ResultPage({
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const { dataIds } = ParamsSchema.parse(searchParams);
-
+  console.log({ dataIds });
   const promises = dataIds.map((id) => {
     return serverClient.getData(id);
   });
 
-  // const data = await serverClient.getData(parsed);
-  return <div>{<h1>{JSON.stringify(dataIds)}</h1>}</div>;
+  const data = await Promise.all(promises);
+  return <div>{<h1>{JSON.stringify(data)}</h1>}</div>;
 }
