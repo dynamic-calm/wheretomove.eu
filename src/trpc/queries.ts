@@ -4,6 +4,7 @@ import { COUNTRIES, IDS, Ids } from "@/config";
 interface Item {
   country: string;
   data: number;
+  unit: "EUR" | "PC_ACT";
 }
 
 async function salary() {
@@ -27,11 +28,12 @@ async function salary() {
       const el = item.at(-3);
       const country = typeof el === "string" ? el : "";
       const data = item.at(-1) ?? 0;
-      return !COUNTRIES.has(country) || !data ? [] : [{ country, data }];
+      return !COUNTRIES.has(country) || !data
+        ? []
+        : [{ country, data, unit: "EUR" }];
     })
     .sort((a: Item, b: Item) => b.data - a.data);
 
-  console.log("salary query ", { data });
   return { [IDS.SALARY]: data } as Record<Ids, Item[]>;
 }
 
@@ -56,11 +58,11 @@ async function unemployment() {
       const el = item.at(-3);
       const country = typeof el === "string" ? el : "";
       const data = item.at(-1) ?? 0;
-      return !COUNTRIES.has(country) || !data ? [] : [{ country, data }];
+      return !COUNTRIES.has(country) || !data
+        ? []
+        : [{ country, data, unit: "PC_ACT" }];
     })
     .sort((a: Item, b: Item) => b.data - a.data);
-
-  console.log("unemployment query", { data });
 
   return { [IDS.UNEMPLOYMENT]: data } as Record<Ids, Item[]>;
 }

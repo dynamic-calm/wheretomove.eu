@@ -11,7 +11,7 @@ export default function Header() {
         <Link href="/">
           <div className="flex cursor-pointer items-center ">
             <Image
-              className="hidden dark:block"
+              className="hidden w-auto dark:block"
               src={euLight}
               priority
               height={40}
@@ -19,7 +19,7 @@ export default function Header() {
               alt="eu stars"
             />
             <Image
-              className="block dark:hidden"
+              className="block w-auto dark:hidden"
               src={euDark}
               priority
               height={40}

@@ -11,14 +11,24 @@ const ParamsSchema = z.object({
 export default async function ResultPage({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: unknown;
 }) {
   const { dataIds } = ParamsSchema.parse(searchParams);
-  console.log({ dataIds });
-  const promises = dataIds.map((id) => {
-    return serverClient.getData(id);
-  });
-
+  const promises = dataIds.map((id) => serverClient.getData(id));
   const data = await Promise.all(promises);
-  return <div>{<h1>{JSON.stringify(data)}</h1>}</div>;
+  const topFive = calculateTopFive(data);
+
+  return (
+    <div>
+      <pre className="flex items-center justify-center">
+        <code>{JSON.stringify(data, null, 2)}</code>
+      </pre>
+    </div>
+  );
+}
+
+type Data = Awaited<ReturnType<typeof serverClient.getData>>;
+
+function calculateTopFive(data: Data[]) {
+  return 3;
 }
