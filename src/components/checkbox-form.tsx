@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import * as z from "zod";
+import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -17,8 +17,8 @@ import {
 import { toast } from "@/components/ui/use-toast";
 
 const FormSchema = z.object({
-  items: z.array(z.string()).refine((value) => value.some((item) => item), {
-    message: "You have to select at least one item.",
+  items: z.array(z.string()).refine((value) => value.length > 1, {
+    message: "You have to select at least two items.",
   }),
 });
 
@@ -50,7 +50,7 @@ export function CheckBoxForm({
       ),
     });
 
-    const params = new URLSearchParams(items.map((item) => [item, "true"]));
+    const params = new URLSearchParams(items.map((item) => ["dataIds", item]));
     router.push(`/result?${params.toString()}`);
   }
 

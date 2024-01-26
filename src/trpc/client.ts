@@ -1,5 +1,4 @@
 import { httpBatchLink } from "@trpc/client";
-
 import { appRouter } from "./router";
 import { createCallerFactory } from "./init";
 
