@@ -15,6 +15,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { IDS } from "@/config";
 
 const FormSchema = z.object({
   items: z.array(z.string()).refine((value) => value.length > 1, {
@@ -35,6 +36,9 @@ export function CheckBoxForm({
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
+    defaultValues: {
+      items: [IDS.SALARY],
+    },
   });
 
   function onSubmit({ items }: z.infer<typeof FormSchema>) {
