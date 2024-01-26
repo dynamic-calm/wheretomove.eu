@@ -1,3 +1,21 @@
+export const IDS = {
+  SALARY: "salary",
+  COST_OF_LIVING: "cost-of-living",
+  MEDIAN_PURCHASING_POWER: "median-purchasing-power",
+  GDP: "gdp",
+} as const;
+
+export const CHECKBOX_ITEMS = new Map([
+  [IDS.SALARY, "Salary"],
+  [IDS.COST_OF_LIVING, "Cost of living"],
+  [IDS.MEDIAN_PURCHASING_POWER, "Median purchasing power"],
+  [IDS.GDP, "GDP"],
+]);
+
+export type Ids = typeof IDS[keyof typeof IDS];
+
+export const IDS_SET = new Set(Object.values(IDS));
+
 export const COUNTRIES = new Set([
   "Belgium",
   "Bulgaria",
@@ -36,16 +54,4 @@ export const COUNTRIES = new Set([
   "Serbia",
   "Türkiye",
   "Kosovo*",
-]);
-
-export const SALARY_ID = "salary";
-export const COST_OF_LIVING_ID = "cost-of-living";
-export const MEDIAN_PURCHASING_POWER_ID = "median-purchasing-power";
-export const GDP_ID = "gdp";
-
-export const IDS = new Set([
-  SALARY_ID,
-  COST_OF_LIVING_ID,
-  MEDIAN_PURCHASING_POWER_ID,
-  GDP_ID,
 ]);

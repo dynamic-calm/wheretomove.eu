@@ -1,12 +1,12 @@
 import JSONstat from "jsonstat-toolkit";
-import { COUNTRIES } from "@/config";
+import { COUNTRIES, IDS } from "@/config";
 
 interface Item {
   country: string;
   data: number;
 }
 
-async function getData(id: string) {
+async function getCostOfLiving(id: string) {
   const url =
     "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_di03?format=JSON&unit=EUR&sex=T&indic_il=MED_E&age=Y18-64&lang=en";
 
@@ -33,3 +33,7 @@ async function getData(id: string) {
 
   return processedData as Item[];
 }
+
+const QUERIES = new Map([[IDS.COST_OF_LIVING, getCostOfLiving]]);
+
+export default QUERIES;

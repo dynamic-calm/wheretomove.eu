@@ -1,7 +1,7 @@
 "use client";
 
-import ITEMS from "./items";
 import { CheckBoxForm } from "@/components/checkbox-form";
+import { CHECKBOX_ITEMS } from "@/config";
 
 export default function Start() {
   return (
@@ -9,7 +9,7 @@ export default function Start() {
       <CheckBoxForm
         title="What matters"
         description="Select the things you value the most in a country."
-        items={ITEMS}
+        items={CHECKBOX_ITEMS}
       />
     </main>
   );

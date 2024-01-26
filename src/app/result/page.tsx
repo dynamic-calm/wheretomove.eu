@@ -1,11 +1,11 @@
 import { z } from "zod";
-import { IDS } from "@/config";
+import { IDS_SET, type Ids } from "@/config";
 import { serverClient } from "@/trpc/client";
 
 const ParamsSchema = z.object({
   dataIds: z
     .array(z.string())
-    .refine((values) => values.every((value) => IDS.has(value))),
+    .refine((values) => values.every((value) => IDS_SET.has(value as Ids))),
 });
 
 export default async function ResultPage({
