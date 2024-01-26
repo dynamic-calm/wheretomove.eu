@@ -1,25 +1,15 @@
-const SALARY_ID = "salary";
-const COST_OF_LIVING_ID = "cost-of-living";
-const MEDIAN_PURCHASING_POWER_ID = "median-purchasing-power";
-const GDP_ID = "gdp";
+import {
+  COST_OF_LIVING_ID,
+  GDP_ID,
+  MEDIAN_PURCHASING_POWER_ID,
+  SALARY_ID,
+} from "@/config";
 
-const items = [
-  {
-    id: SALARY_ID,
-    label: "Salary",
-  },
-  {
-    id: COST_OF_LIVING_ID,
-    label: "Cost of living",
-  },
-  {
-    id: MEDIAN_PURCHASING_POWER_ID,
-    label: "Median purchasing power",
-  },
-  {
-    id: GDP_ID,
-    label: "GDP",
-  },
-] as const;
+const ITEMS = new Map([
+  [SALARY_ID, "Salary"],
+  [COST_OF_LIVING_ID, "Cost of living"],
+  [MEDIAN_PURCHASING_POWER_ID, "Median purchasing power"],
+  [GDP_ID, "GDP"],
+]);
 
-export default items;
+export default ITEMS;

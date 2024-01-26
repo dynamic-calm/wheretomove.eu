@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import * as z from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -14,8 +15,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "@/components/ui/use-toast";
-import { useRouter } from "next/navigation";
-import items from "@/app/start/items";
 
 const FormSchema = z.object({
   items: z.array(z.string()).refine((value) => value.some((item) => item), {
@@ -26,9 +25,11 @@ const FormSchema = z.object({
 export function CheckBoxForm({
   title,
   description,
+  items,
 }: {
   title: string;
   description: string;
+  items: Map<string, string>;
 }) {
   const router = useRouter();
 
@@ -49,7 +50,8 @@ export function CheckBoxForm({
       ),
     });
 
-    router.push(`/result?items=${JSON.stringify(items)}`);
+    const params = new URLSearchParams(items.map((item) => [item, "true"]));
+    router.push(`/result?${params.toString()}`);
   }
 
   return (
@@ -64,33 +66,33 @@ export function CheckBoxForm({
                 <FormLabel className="text-base">{title}</FormLabel>
                 <FormDescription>{description}</FormDescription>
               </div>
-              {items.map((item) => (
+              {[...items.entries()].map(([id, label]) => (
                 <FormField
-                  key={item.id}
+                  key={id}
                   control={form.control}
                   name="items"
                   render={({ field }) => {
                     return (
                       <FormItem
-                        key={item.id}
+                        key={id}
                         className="flex flex-row items-start space-x-3 space-y-0"
                       >
                         <FormControl>
                           <Checkbox
-                            checked={field.value?.includes(item.id)}
+                            checked={field.value?.includes(id)}
                             onCheckedChange={(checked) => {
                               return checked
-                                ? field.onChange([...field.value, item.id])
+                                ? field.onChange([...field.value, id])
                                 : field.onChange(
                                     field.value?.filter(
-                                      (value) => value !== item.id,
+                                      (value) => value !== id,
                                     ),
                                   );
                             }}
                           />
                         </FormControl>
                         <FormLabel className="text-sm font-normal">
-                          {item.label}
+                          {label}
                         </FormLabel>
                       </FormItem>
                     );

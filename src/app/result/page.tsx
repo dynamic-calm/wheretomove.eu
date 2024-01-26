@@ -1,30 +1,21 @@
-import { COUNTRIES } from "@/config";
-import JSONstat from "jsonstat-toolkit";
+import { COUNTRIES, IDS, type Ids } from "@/config";
+// import JSONstat from "jsonstat-toolkit";
 
 export default async function ResultPage({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-  const items = JSON.parse(searchParams.items as string);
-  // if any of the items are not on the items IDs show error
-  const promises = items.map((item: string) => getData(item));
+  if (!areCorrect(searchParams)) {
+    // TODO: Handle incorrect params
+  }
 
-  const results = await getData(items[0]);
-  console.log({ results });
   return (
     <div>
-      {results.slice(0, 5).map((result) => {
-        return (
-          <div key={result.country}>
-            {result.country} <p>{result.data}</p>
-          </div>
-        );
-      })}
+      <h1>Hello</h1>
     </div>
   );
 }
-
 async function getData(id: string) {
   const url =
     "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_di03?format=JSON&unit=EUR&sex=T&indic_il=MED_E&age=Y18-64&lang=en";
@@ -56,4 +47,14 @@ async function getData(id: string) {
 interface FItem {
   country: string;
   data: number;
+}
+
+type Params = Record<Ids, "true">;
+
+function areCorrect(params: {
+  [key: string]: string | string[] | undefined;
+}): params is Params {
+  return Object.entries(params).every(
+    ([key, value]) => IDS.has(key) && value === "true",
+  );
 }
