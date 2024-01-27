@@ -28,6 +28,7 @@ function query({ dataSetCode, params, unit, id }: QueryArgs) {
       .flatMap((item: unknown[]) => processItem(item, unit))
       .sort((a: Item, b: Item) => b.value - a.value);
 
+    console.log({ id, data });
     return { [id]: data } as Record<Ids, Item[]>;
   };
 }
@@ -46,12 +47,14 @@ const unemployment = query(QUERY_ARGS.get(IDS.UNEMPLOYMENT)!);
 const financialSatisfaction = query(
   QUERY_ARGS.get(IDS.FINANCIAL_SATISFACTION)!,
 );
+const greenZones = query(QUERY_ARGS.get(IDS.GREEN_ZONES)!);
 
 const QUERIES = new Map<Ids, () => Promise<Record<Ids, Item[]>>>([
   [IDS.SALARY, salary],
   [IDS.UNEMPLOYMENT, unemployment],
   [IDS.LIFE_SATISFACTION, lifeSatisfaction],
   [IDS.FINANCIAL_SATISFACTION, financialSatisfaction],
+  [IDS.GREEN_ZONES, greenZones],
 ]);
 
 export default QUERIES;

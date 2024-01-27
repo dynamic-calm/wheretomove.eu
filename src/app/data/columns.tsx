@@ -89,4 +89,22 @@ export const columns: ColumnDef<Country>[] = [
       return <div className="text-right">{amount}</div>;
     },
   },
+
+  {
+    id: IDS.GREEN_ZONES,
+    accessorFn: (row) => row.data.greenZones?.value ?? null,
+    header: ({ column }) => (
+      <HeaderSortable text="Green zones" column={column} />
+    ),
+
+    cell: ({ row }) => {
+      const value = row.getValue(IDS.GREEN_ZONES) as string;
+      if (!value) {
+        return <div className="text-right">-</div>;
+      }
+
+      const amount = parseFloat(value);
+      return <div className="text-right">{amount}</div>;
+    },
+  },
 ];

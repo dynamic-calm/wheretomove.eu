@@ -8,6 +8,7 @@ export const IDS = {
   UNEMPLOYMENT: "unemployment",
   LIFE_SATISFACTION: "lifeSatisfaction",
   FINANCIAL_SATISFACTION: "financialSatisfaction",
+  GREEN_ZONES: "greenZones",
 } as const;
 
 export const CHECKBOX_ITEMS = new Map([
@@ -81,6 +82,22 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
       dataSetCode: "ilc_pw01",
       unit: "-",
       id: IDS.FINANCIAL_SATISFACTION,
+    },
+  ],
+  [
+    IDS.GREEN_ZONES,
+    {
+      params: {
+        time: "2013",
+        unit: "RTG",
+        indic_wb: "GREENSAT",
+        isced11: "TOTAL",
+        sex: "T",
+        age: "Y_GE16",
+      },
+      dataSetCode: "ilc_pw01",
+      unit: "-",
+      id: IDS.GREEN_ZONES,
     },
   ],
 ]);
