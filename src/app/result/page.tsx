@@ -4,6 +4,9 @@ import { serverClient } from "@/trpc/client";
 import { getScore, transformData } from "@/lib/utils";
 import { DataTable } from "@/components/data-table";
 import { columns } from "./columns";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const ParamsSchema = z.object({
   dataIds: z
@@ -23,7 +26,7 @@ export default async function ResultPage({
   const scored = getScore(allCountryData, dataIds);
 
   return (
-    <div className="flex min-h-[calc(100vh-8rem)] flex-col items-center justify-center text-left">
+    <div className="flex min-h-[calc(100vh-8rem)] flex-col items-center justify-around text-left">
       <div>
         <p>
           {"You should move to "}
@@ -31,6 +34,11 @@ export default async function ResultPage({
         </p>
         <DataTable columns={columns} data={scored} />
       </div>
+      <Link href="/data">
+        <Button variant="secondary">
+          <p className="pr-2">Check all data</p> <ArrowRightIcon />
+        </Button>
+      </Link>
     </div>
   );
 }

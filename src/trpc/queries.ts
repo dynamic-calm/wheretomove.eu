@@ -28,7 +28,6 @@ function query({ dataSetCode, params, unit, id }: QueryArgs) {
       .flatMap((item: unknown[]) => processItem(item, unit))
       .sort((a: Item, b: Item) => b.value - a.value);
 
-    console.log({ id, data });
     return { [id]: data } as Record<Ids, Item[]>;
   };
 }

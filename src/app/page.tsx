@@ -13,7 +13,7 @@ export default function Home() {
           Make informed choices.
         </h3>
       </div>
-      <Link href="/data">
+      <Link href="/select">
         <Button className="pt-2">
           <p className="pr-2">Check the numbers</p>
           <ArrowRightIcon />
