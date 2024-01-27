@@ -80,7 +80,7 @@ export function DataTable<TData, TValue>({
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" className={"ml-auto" + inter.className}>
+            <Button variant="outline" className="ml-auto">
               Columns
             </Button>
           </DropdownMenuTrigger>
@@ -105,7 +105,7 @@ export function DataTable<TData, TValue>({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="rounded-sm border">
+      <div className="rounded-lg border">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -131,6 +131,7 @@ export function DataTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  className="font-medium"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
