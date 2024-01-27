@@ -21,11 +21,10 @@ function query({ dataSetCode, params, unit, id }: QueryArgs) {
     const filter = paramsToFilter(params);
     const url = `${EUROSTAT_HOST}/${dataSetCode}?${parsedParams.toString()}`;
     const jst = await JSONstat(url);
-    const data1 = jst.Dataset(0).Dice(filter).toTable();
-    if (id === IDS.FINANCIAL_SATISFACTION) {
-      console.log(data1);
-    }
-    const data = data1
+    const data = jst
+      .Dataset(0)
+      .Dice(filter)
+      .toTable()
       .flatMap((item: unknown[]) => processItem(item, unit))
       .sort((a: Item, b: Item) => b.value - a.value);
 
