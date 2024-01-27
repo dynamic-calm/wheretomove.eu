@@ -1,7 +1,7 @@
 import JSONstat from "jsonstat-toolkit";
 import { COUNTRIES, IDS, type Ids } from "@/config";
 
-interface Item {
+export interface Item {
   country: string;
   data: number;
   unit: "EUR" | "PC_ACT";

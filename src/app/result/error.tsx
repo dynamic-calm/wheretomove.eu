@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
 
 export default function Error({
   error,
@@ -30,11 +31,14 @@ export default function Error({
 
   return (
     <div className="flex min-h-[calc(100vh-8rem)] flex-col items-center justify-center">
-      <h2 className="pb-2">Something went wrong.</h2>
+      <h2 className="pb-4">Something went wrong.</h2>
       <div className="flex items-center justify-around">
         <Button onClick={() => reset()}>Try again</Button>
-        <Button variant="link" className="pl-3">
-          <Link href="/start">Go back.</Link>
+        <Button variant="link" className="pl-7">
+          <Link href="/start">
+            <p className="pr-1">Go back</p>
+          </Link>
+          <ArrowLeftIcon />
         </Button>
       </div>
     </div>

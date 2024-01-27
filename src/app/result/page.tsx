@@ -1,6 +1,8 @@
 import { z } from "zod";
-import { IDS_SET, type Ids } from "@/config";
+import { IDS, IDS_SET, type Ids } from "@/config";
 import { serverClient } from "@/trpc/client";
+import { DataTable } from "@/components/data-table";
+import { columns } from "./columns";
 
 const ParamsSchema = z.object({
   dataIds: z
@@ -15,19 +17,18 @@ export default async function ResultPage({
 }) {
   const { dataIds } = ParamsSchema.parse(searchParams);
   const promises = dataIds.map((id) => serverClient.getData(id));
-  const data = await Promise.all(promises);
-  const topFive = calculateTopFive(data);
+  const [data] = await Promise.all(promises);
 
   return (
     <div>
-      <pre className="flex items-center justify-center">
-        <code>{JSON.stringify(data, null, 2)}</code>
+      <pre className="flex min-h-[calc(100vh-8rem)] items-center justify-center">
+        <DataTable columns={columns} data={data[IDS.SALARY]} />
       </pre>
     </div>
   );
 }
 
-type Data = Awaited<ReturnType<typeof serverClient.getData>>;
+export type Data = Awaited<ReturnType<typeof serverClient.getData>>;
 
 function calculateTopFive(data: Data[]) {
   return 3;
