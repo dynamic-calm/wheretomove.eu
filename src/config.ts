@@ -167,7 +167,6 @@ export const COUNTRIES = new Set([
   "Norway",
   "Switzerland",
   "Montenegro",
-  "North Macedonia",
   "Albania",
   "Serbia",
   "Türkiye",

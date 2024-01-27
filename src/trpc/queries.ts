@@ -1,5 +1,4 @@
 import JSONstat from "jsonstat-toolkit";
-import { paramsToFilter } from "@/lib/utils";
 import { COUNTRIES, EUROSTAT_HOST, IDS, QUERY_ARGS, type Ids } from "@/config";
 
 export interface Item {
