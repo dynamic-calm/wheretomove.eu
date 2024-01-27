@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import { serverClient } from "@/trpc/client";
 import { type ClassValue, clsx } from "clsx";
-import { METRIC_WEIGHTS, type Ids } from "@/config";
+import { IDS, METRIC_RANGES, METRIC_WEIGHTS, type Ids } from "@/config";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -51,36 +51,24 @@ export function paramsToFilter(params: Record<string, string>) {
 }
 
 export function getScore(allCountryData: Country[], dataIds: Ids[]) {
-  const metricRanges = dataIds.reduce(
-    (acc, id) => {
-      acc[id] = { min: Infinity, max: -Infinity };
-      return acc;
-    },
-    {} as Record<Ids, { min: number; max: number }>,
-  );
+  const data = allCountryData.flatMap(({ country, data }) => {
+    // If any of the data selected by the user is missing in a country, skip it.
+    if (dataIds.some((id) => !data[id])) {
+      return [];
+    }
 
-  allCountryData.forEach((country) => {
-    Object.entries(country.data).forEach(([id, { value }]) => {
-      if (value < metricRanges[id as Ids].min) {
-        metricRanges[id as Ids].min = value;
-      }
-      if (value > metricRanges[id as Ids].max) {
-        metricRanges[id as Ids].max = value;
-      }
-    });
-  });
-
-  const scores = allCountryData.map(({ data, country }) => {
     const score = Object.entries(data).reduce((sum, [id, { value }]) => {
-      const range = metricRanges[id as Ids];
+      const range = METRIC_RANGES[id as Ids];
       const normalizedValue =
-        ((value - range.min) / (range.max - range.min)) * 10;
-      const weight = METRIC_WEIGHTS.get(id as Ids)!;
-      return sum + normalizedValue * weight;
+        id === IDS.UNEMPLOYMENT
+          ? ((range.max - value) / (range.max - range.min)) * 10
+          : ((value - range.min) / (range.max - range.min)) * 10;
+
+      return sum + normalizedValue;
     }, 0);
 
-    return { country, score: score / dataIds.length };
+    return { country, score };
   });
 
-  return scores;
+  return data.sort((a, b) => b.score - a.score);
 }

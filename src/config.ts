@@ -27,6 +27,29 @@ export const METRIC_WEIGHTS = new Map([
   [IDS.GREEN_ZONES, 1],
 ]);
 
+export const METRIC_RANGES = {
+  [IDS.SALARY]: {
+    min: 3000,
+    max: 50000,
+  },
+  [IDS.UNEMPLOYMENT]: {
+    min: 2,
+    max: 13,
+  },
+  [IDS.LIFE_SATISFACTION]: {
+    min: 0,
+    max: 10,
+  },
+  [IDS.FINANCIAL_SATISFACTION]: {
+    min: 0,
+    max: 10,
+  },
+  [IDS.GREEN_ZONES]: {
+    min: 0,
+    max: 10,
+  },
+};
+
 export type Ids = (typeof IDS)[keyof typeof IDS];
 
 export const IDS_SET = new Set(Object.values(IDS));

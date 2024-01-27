@@ -35,7 +35,7 @@ export default function Error({
       <div className="flex items-center justify-around">
         <Button onClick={() => reset()}>Try again</Button>
         <Button variant="link" className="pl-7">
-          <Link href="/start">
+          <Link href="/">
             <p className="pr-1">Go back</p>
           </Link>
           <ArrowLeftIcon />
