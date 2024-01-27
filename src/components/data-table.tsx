@@ -1,4 +1,5 @@
 "use client";
+import { Inter } from "next/font/google";
 
 import {
   ColumnDef,
@@ -8,8 +9,11 @@ import {
   useReactTable,
   getPaginationRowModel,
   getSortedRowModel,
+  getFilteredRowModel,
+  ColumnFiltersState,
 } from "@tanstack/react-table";
 
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -22,6 +26,8 @@ import {
 
 import { useState } from "react";
 
+const inter = Inter({ subsets: ["latin"] });
+
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
@@ -32,6 +38,7 @@ export function DataTable<TData, TValue>({
   data,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const table = useReactTable({
     data,
@@ -40,13 +47,26 @@ export function DataTable<TData, TValue>({
     getPaginationRowModel: getPaginationRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
+    onColumnFiltersChange: setColumnFilters,
+    getFilteredRowModel: getFilteredRowModel(),
     state: {
       sorting,
+      columnFilters,
     },
   });
 
   return (
-    <div className="w-96 min-w-96 md:w-2/3">
+    <div className={inter.className + "w-96 min-w-96 md:w-2/3"}>
+      <div className="flex items-center py-4">
+        <Input
+          placeholder="Filter countries..."
+          value={(table.getColumn("country")?.getFilterValue() as string) ?? ""}
+          onChange={(event) =>
+            table.getColumn("country")?.setFilterValue(event.target.value)
+          }
+          className="max-w-sm"
+        />
+      </div>
       <div className="rounded-sm border">
         <Table>
           <TableHeader>
