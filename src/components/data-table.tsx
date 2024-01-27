@@ -46,7 +46,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="min-w-96">
+    <div className="w-96 min-w-96 md:w-2/3">
       <div className="rounded-sm border">
         <Table>
           <TableHeader>

@@ -43,6 +43,8 @@ export function transformData(allData: AllData): Country[] {
     country,
     data,
   }));
+
   console.dir({ result }, { depth: null });
+
   return result;
 }
