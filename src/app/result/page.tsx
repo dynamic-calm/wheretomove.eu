@@ -23,10 +23,8 @@ export default async function ResultPage({
   const [data] = allData;
 
   return (
-    <div>
-      <pre className="flex min-h-[calc(100vh-8rem)] items-center justify-center">
-        <DataTable columns={columns} data={allCountryData} />
-      </pre>
+    <div className="flex min-h-[calc(100vh-8rem)] items-center justify-center">
+      <DataTable columns={columns} data={allCountryData} />
     </div>
   );
 }

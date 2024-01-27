@@ -19,6 +19,7 @@ export const columns: ColumnDef<Country>[] = [
   {
     accessorKey: "country",
     header: "Country",
+    enableHiding: false,
   },
   {
     id: IDS.SALARY,
@@ -67,6 +68,7 @@ export const columns: ColumnDef<Country>[] = [
   },
   {
     id: "actions",
+    enableHiding: false,
     cell: ({ row }) => {
       const country = row.original;
 
