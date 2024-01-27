@@ -8,7 +8,15 @@ export default function HeaderSortable({
   column,
 }: {
   text: string;
-  column: Column<Country, unknown>;
+  column:
+    | Column<Country, unknown>
+    | Column<
+        {
+          country: string;
+          score: number;
+        },
+        unknown
+      >;
 }) {
   return (
     <div className="text-right">

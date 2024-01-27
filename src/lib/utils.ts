@@ -50,18 +50,37 @@ export function paramsToFilter(params: Record<string, string>) {
   }, {});
 }
 
-export function getTopFive(allCountryData: Country[]) {
-  const countryScores = allCountryData.map((country) => {
-    const score = Object.entries(country.data).reduce(
-      (sum, [id, { value }]) => {
-        const weight = METRIC_WEIGHTS.get(id as Ids)!;
-        return sum + value * weight;
-      },
-      0,
-    );
+export function getScore(allCountryData: Country[], dataIds: Ids[]) {
+  const metricRanges = dataIds.reduce(
+    (acc, id) => {
+      acc[id] = { min: Infinity, max: -Infinity };
+      return acc;
+    },
+    {} as Record<Ids, { min: number; max: number }>,
+  );
 
-    return { country: country.country, score };
+  allCountryData.forEach((country) => {
+    Object.entries(country.data).forEach(([id, { value }]) => {
+      if (value < metricRanges[id as Ids].min) {
+        metricRanges[id as Ids].min = value;
+      }
+      if (value > metricRanges[id as Ids].max) {
+        metricRanges[id as Ids].max = value;
+      }
+    });
   });
 
-  return countryScores.sort((a, b) => b.score - a.score).slice(0, 5);
+  const scores = allCountryData.map(({ data, country }) => {
+    const score = Object.entries(data).reduce((sum, [id, { value }]) => {
+      const range = metricRanges[id as Ids];
+      const normalizedValue =
+        ((value - range.min) / (range.max - range.min)) * 10;
+      const weight = METRIC_WEIGHTS.get(id as Ids)!;
+      return sum + normalizedValue * weight;
+    }, 0);
+
+    return { country, score: score / dataIds.length };
+  });
+
+  return scores;
 }
