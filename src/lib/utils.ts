@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import { serverClient } from "@/trpc/client";
 import { type ClassValue, clsx } from "clsx";
-import { type Ids } from "@/config";
+import { METRIC_WEIGHTS, type Ids } from "@/config";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -48,4 +48,20 @@ export function paramsToFilter(params: Record<string, string>) {
   return Object.entries(params).reduce((acc, [key, value]) => {
     return { ...acc, [key]: [value] };
   }, {});
+}
+
+export function getTopFive(allCountryData: Country[]) {
+  const countryScores = allCountryData.map((country) => {
+    const score = Object.entries(country.data).reduce(
+      (sum, [id, { value }]) => {
+        const weight = METRIC_WEIGHTS.get(id as Ids)!;
+        return sum + value * weight;
+      },
+      0,
+    );
+
+    return { country: country.country, score };
+  });
+
+  return countryScores.sort((a, b) => b.score - a.score).slice(0, 5);
 }

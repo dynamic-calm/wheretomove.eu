@@ -65,7 +65,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="relative flex h-[600px] min-h-32 w-96 min-w-96 flex-col md:w-2/3">
+    <div className="flex w-96 min-w-96 h-[475px] flex-col justify-start md:w-2/3">
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter countries..."

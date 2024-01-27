@@ -15,6 +15,16 @@ export const CHECKBOX_ITEMS = new Map([
   [IDS.SALARY, "Salary"],
   [IDS.UNEMPLOYMENT, "Unemployment"],
   [IDS.LIFE_SATISFACTION, "Overall life satisfaction"],
+  [IDS.FINANCIAL_SATISFACTION, "Financial satisfaction"],
+  [IDS.GREEN_ZONES, "Green zones"],
+]);
+
+export const METRIC_WEIGHTS = new Map([
+  [IDS.SALARY, 1],
+  [IDS.UNEMPLOYMENT, -1],
+  [IDS.LIFE_SATISFACTION, 1],
+  [IDS.FINANCIAL_SATISFACTION, 1],
+  [IDS.GREEN_ZONES, 1],
 ]);
 
 export type Ids = (typeof IDS)[keyof typeof IDS];

@@ -9,13 +9,14 @@ export default function Home() {
         <h2 className="text-4xl font-semibold">
           Discover your ideal country based on data.
         </h2>
-        <h3 className="py-4 text-xl">
-          Embark on a journey of informed choices.
+        <h3 className="pt-3 pb-4 text-xl">
+          Make informed choices.
         </h3>
       </div>
       <Link href="/data">
-        <Button>
-          <p className="pr-2">Check the numbers</p> <ArrowRightIcon />
+        <Button className="pt-2">
+          <p className="pr-2">Check the numbers</p>
+          <ArrowRightIcon />
         </Button>
       </Link>
     </main>

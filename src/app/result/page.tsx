@@ -1,9 +1,7 @@
 import { z } from "zod";
-import { transformData } from "@/lib/utils";
-import { IDS, IDS_SET, type Ids } from "@/config";
+import { IDS_SET, type Ids } from "@/config";
 import { serverClient } from "@/trpc/client";
-import { DataTable } from "@/components/data-table";
-import { columns } from "./columns";
+import { getTopFive, transformData } from "@/lib/utils";
 
 const ParamsSchema = z.object({
   dataIds: z
@@ -20,10 +18,22 @@ export default async function ResultPage({
   const promises = dataIds.map((id) => serverClient.getData(id));
   const allData = await Promise.all(promises);
   const allCountryData = transformData(allData);
-  // TODO: Compute top 5 for user
+  const topFive = getTopFive(allCountryData);
+
   return (
-    <div className="flex min-h-[calc(100vh-8rem)] items-center justify-center">
-      <DataTable columns={columns} data={allCountryData} />
+    <div className="flex min-h-[calc(100vh-8rem)] flex-col items-center justify-center text-left">
+      <div>
+        <p>
+          {"The winner is "}
+          <span className="font-bold">{topFive.at(0)?.country}</span>
+        </p>
+        <p className="text-sm">Followed by: </p>
+        <ul className="text-sm font-semibold">
+          {topFive.slice(1).map(({ country }) => (
+            <li key={country} className="pl-6">{`- ${country}`}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

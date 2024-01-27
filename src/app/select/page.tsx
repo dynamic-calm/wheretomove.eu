@@ -8,7 +8,7 @@ export default function Start() {
     <main className="flex min-h-[calc(100vh-8rem)] flex-col items-center justify-center">
       <CheckBoxForm
         title="What matters"
-        description="Select the things you value the most in a country."
+        description="Select your priorities to find the right country for you."
         items={CHECKBOX_ITEMS}
       />
     </main>
