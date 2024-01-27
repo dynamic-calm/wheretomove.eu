@@ -7,6 +7,7 @@ export const IDS = {
   SALARY: "salary",
   UNEMPLOYMENT: "unemployment",
   LIFE_SATISFACTION: "lifeSatisfaction",
+  FINANCIAL_SATISFACTION: "financialSatisfaction",
 } as const;
 
 export const CHECKBOX_ITEMS = new Map([
@@ -66,6 +67,22 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
       id: IDS.UNEMPLOYMENT,
     },
   ],
+  [
+    IDS.FINANCIAL_SATISFACTION,
+    {
+      params: {
+        time: "2018",
+        unit: "RTG",
+        indic_wb: "FINSAT",
+        isced11: "TOTAL",
+        sex: "T",
+        age: "Y_GE16",
+      },
+      dataSetCode: "ilc_pw01",
+      unit: "-",
+      id: IDS.FINANCIAL_SATISFACTION,
+    },
+  ],
 ]);
 
 export const COUNTRIES = new Set([
@@ -99,7 +116,6 @@ export const COUNTRIES = new Set([
   "Iceland",
   "Norway",
   "Switzerland",
-  "United Kingdom",
   "Montenegro",
   "North Macedonia",
   "Albania",

@@ -33,7 +33,6 @@ export const columns: ColumnDef<Country>[] = [
       return <div className="text-right">{`${formatted}/yr`}</div>;
     },
   },
-
   {
     id: IDS.UNEMPLOYMENT,
     accessorFn: (row) => row.data.unemployment?.value ?? null,
@@ -56,7 +55,6 @@ export const columns: ColumnDef<Country>[] = [
       return <div className="text-right">{formatted}</div>;
     },
   },
-
   {
     id: IDS.LIFE_SATISFACTION,
     accessorFn: (row) => row.data.lifeSatisfaction?.value ?? null,
@@ -71,7 +69,23 @@ export const columns: ColumnDef<Country>[] = [
       }
 
       const amount = parseFloat(value);
+      return <div className="text-right">{amount}</div>;
+    },
+  },
+  {
+    id: IDS.FINANCIAL_SATISFACTION,
+    accessorFn: (row) => row.data.financialSatisfaction?.value ?? null,
+    header: ({ column }) => (
+      <HeaderSortable text="Financial satisfaction" column={column} />
+    ),
 
+    cell: ({ row }) => {
+      const value = row.getValue(IDS.FINANCIAL_SATISFACTION) as string;
+      if (!value) {
+        return <div className="text-right">-</div>;
+      }
+
+      const amount = parseFloat(value);
       return <div className="text-right">{amount}</div>;
     },
   },

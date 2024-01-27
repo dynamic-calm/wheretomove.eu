@@ -21,10 +21,11 @@ function query({ dataSetCode, params, unit, id }: QueryArgs) {
     const filter = paramsToFilter(params);
     const url = `${EUROSTAT_HOST}/${dataSetCode}?${parsedParams.toString()}`;
     const jst = await JSONstat(url);
-    const data = jst
-      .Dataset(0)
-      .Dice(filter)
-      .toTable()
+    const data1 = jst.Dataset(0).Dice(filter).toTable();
+    if (id === IDS.FINANCIAL_SATISFACTION) {
+      console.log(data1);
+    }
+    const data = data1
       .flatMap((item: unknown[]) => processItem(item, unit))
       .sort((a: Item, b: Item) => b.value - a.value);
 
@@ -43,11 +44,15 @@ function processItem(item: unknown[], unit: string) {
 const salary = query(QUERY_ARGS.get(IDS.SALARY)!);
 const lifeSatisfaction = query(QUERY_ARGS.get(IDS.LIFE_SATISFACTION)!);
 const unemployment = query(QUERY_ARGS.get(IDS.UNEMPLOYMENT)!);
+const financialSatisfaction = query(
+  QUERY_ARGS.get(IDS.FINANCIAL_SATISFACTION)!,
+);
 
 const QUERIES = new Map<Ids, () => Promise<Record<Ids, Item[]>>>([
   [IDS.SALARY, salary],
   [IDS.UNEMPLOYMENT, unemployment],
   [IDS.LIFE_SATISFACTION, lifeSatisfaction],
+  [IDS.FINANCIAL_SATISFACTION, financialSatisfaction],
 ]);
 
 export default QUERIES;
