@@ -1,6 +1,5 @@
 "use client";
 
-import { Inter } from "next/font/google";
 import {
   ColumnDef,
   flexRender,
@@ -35,8 +34,6 @@ import {
 
 import { useState } from "react";
 
-const inter = Inter({ subsets: ["latin"] });
-
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
@@ -68,7 +65,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="w-96 min-w-96 md:w-2/3">
+    <div className="relative flex h-[600px] min-h-32 w-96 min-w-96 flex-col md:w-2/3">
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter countries..."
@@ -105,14 +102,14 @@ export function DataTable<TData, TValue>({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="rounded-lg border">
+      <div className="rounded-lg border dark:border-neutral-700">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead key={header.id} className="p-0 pl-2">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -125,16 +122,16 @@ export function DataTable<TData, TValue>({
               </TableRow>
             ))}
           </TableHeader>
-          <TableBody>
+          <TableBody className="dark:border-neutral-700">
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className="font-medium"
+                  className="font-medium dark:border-neutral-700"
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell key={cell.id} className="min-w-12 max-w-12">
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext(),

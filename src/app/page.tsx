@@ -13,9 +13,9 @@ export default function Home() {
           Embark on a journey of informed choices.
         </h3>
       </div>
-      <Link href="/start">
+      <Link href="/data">
         <Button>
-          <p className="pr-2">Start</p> <ArrowRightIcon />
+          <p className="pr-2">Check the numbers</p> <ArrowRightIcon />
         </Button>
       </Link>
     </main>

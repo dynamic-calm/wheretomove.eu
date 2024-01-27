@@ -2,7 +2,6 @@ import { twMerge } from "tailwind-merge";
 import { serverClient } from "@/trpc/client";
 import { type ClassValue, clsx } from "clsx";
 import { type Ids } from "@/config";
-import { type Item } from "@/trpc/queries";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -39,12 +38,8 @@ export function transformData(allData: AllData): Country[] {
     {},
   );
 
-  const result = Object.entries(countryMap).map(([country, data]) => ({
+  return Object.entries(countryMap).map(([country, data]) => ({
     country,
     data,
   }));
-
-  console.dir({ result }, { depth: null });
-
-  return result;
 }
