@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import { serverClient } from "@/trpc/client";
+import { METRIC_RANGES, METRIC_WEIGHTS, type Ids } from "@/config";
 import { type ClassValue, clsx } from "clsx";
-import { IDS, METRIC_RANGES, METRIC_WEIGHTS, type Ids } from "@/config";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -60,7 +60,7 @@ export function getScore(allCountryData: Country[], dataIds: Ids[]) {
     const score = Object.entries(data).reduce((sum, [id, { value }]) => {
       const range = METRIC_RANGES[id as Ids];
       const normalizedValue =
-        id === IDS.UNEMPLOYMENT
+        METRIC_WEIGHTS.get(id as Ids)! < 0
           ? ((range.max - value) / (range.max - range.min)) * 10
           : ((value - range.min) / (range.max - range.min)) * 10;
 

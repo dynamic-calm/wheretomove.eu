@@ -23,16 +23,17 @@ export default async function ResultPage({
   const promises = dataIds.map((id) => serverClient.getData(id));
   const allData = await Promise.all(promises);
   const allCountryData = transformData(allData);
-  const scored = getScore(allCountryData, dataIds);
+  const scores = getScore(allCountryData, dataIds);
 
   return (
     <div className="flex min-h-[calc(100vh-8rem)] flex-col items-center justify-around text-left">
       <div>
         <p>
           {"You should move to "}
-          <span className="font-bold">{scored.at(0)?.country}</span>
+          <span className="font-bold">{scores.at(0)?.country}</span>
+          {" based on your priorities."}
         </p>
-        <DataTable columns={columns} data={scored} />
+        <DataTable columns={columns} data={scores} />
       </div>
       <div className="flex w-80 items-center justify-around">
         <Link href="/select">
@@ -43,7 +44,7 @@ export default async function ResultPage({
         </Link>
         <Link href="/data">
           <Button>
-            <p className="pr-2">Check all data</p> <ArrowRightIcon />
+            <p className="pr-2">Check all data</p>
           </Button>
         </Link>
       </div>

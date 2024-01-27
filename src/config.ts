@@ -12,7 +12,7 @@ export const IDS = {
 } as const;
 
 export const CHECKBOX_ITEMS = new Map([
-  [IDS.SALARY, "Salary"],
+  [IDS.SALARY, "Median salary"],
   [IDS.UNEMPLOYMENT, "Low unemployment"],
   [IDS.LIFE_SATISFACTION, "Overall life satisfaction"],
   [IDS.FINANCIAL_SATISFACTION, "Financial satisfaction"],

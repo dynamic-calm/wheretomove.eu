@@ -14,7 +14,7 @@ export const columns: ColumnDef<Result>[] = [
   },
   {
     accessorKey: "score",
-    header: ({ column }) => <HeaderSortable text="Score" column={column} />,
+    header: ({ column }) => <HeaderSortable text="Overall score" column={column} />,
 
     cell: ({ row }) => {
       const value = row.getValue("score") as string;
@@ -25,6 +25,7 @@ export const columns: ColumnDef<Result>[] = [
       const amount = parseFloat(value);
       const formatted = new Intl.NumberFormat("es-ES", {
         maximumFractionDigits: 2,
+        minimumFractionDigits: 2,
       }).format(amount);
 
       return <div className="text-right">{formatted}</div>;
