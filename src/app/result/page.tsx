@@ -4,7 +4,7 @@ import { serverClient } from "@/trpc/client";
 import { getScore, transformData } from "@/lib/utils";
 import { DataTable } from "@/components/data-table";
 import { columns } from "./columns";
-import { ArrowRightIcon } from "@radix-ui/react-icons";
+import { ArrowRightIcon, ArrowLeftIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -34,11 +34,19 @@ export default async function ResultPage({
         </p>
         <DataTable columns={columns} data={scored} />
       </div>
-      <Link href="/data">
-        <Button variant="secondary">
-          <p className="pr-2">Check all data</p> <ArrowRightIcon />
-        </Button>
-      </Link>
+      <div className="flex w-80 items-center justify-around">
+        <Link href="/select">
+          <Button variant="secondary">
+            <p className="pr-2">Try again</p>
+            <ArrowLeftIcon />
+          </Button>
+        </Link>
+        <Link href="/data">
+          <Button>
+            <p className="pr-2">Check all data</p> <ArrowRightIcon />
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 }
