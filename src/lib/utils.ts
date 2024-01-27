@@ -44,12 +44,6 @@ export function transformData(allData: AllData): Country[] {
   }));
 }
 
-export function paramsToFilter(params: Record<string, string>) {
-  return Object.entries(params).reduce((acc, [key, value]) => {
-    return { ...acc, [key]: [value] };
-  }, {});
-}
-
 export function getScore(allCountryData: Country[], dataIds: Ids[]) {
   const data = allCountryData.flatMap(({ country, data }) => {
     // If any of the data selected by the user is missing in a country, skip it.

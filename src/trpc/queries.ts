@@ -32,6 +32,12 @@ function query({ dataSetCode, params, unit, id }: QueryArgs) {
   };
 }
 
+function paramsToFilter(params: Record<string, string>) {
+  return Object.entries(params).reduce((acc, [key, value]) => {
+    return { ...acc, [key]: [value] };
+  }, {});
+}
+
 function processItem(item: unknown[], unit: string) {
   const country = item.at(-3);
   const value = item.at(-1);
