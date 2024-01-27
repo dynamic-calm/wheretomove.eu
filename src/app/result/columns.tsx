@@ -1,17 +1,17 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import type { Item } from "@/trpc/queries";
-import type { ColumnDef } from "@tanstack/react-table";
 import { BsArrowsVertical } from "react-icons/bs";
+import type { ColumnDef } from "@tanstack/react-table";
+import type { Country } from "@/lib/utils";
 
-export const columns: ColumnDef<Item>[] = [
+export const columns: ColumnDef<Country>[] = [
   {
     accessorKey: "country",
     header: "Country",
   },
   {
-    accessorKey: "data",
+    accessorKey: "value",
     header: ({ column }) => {
       return (
         <div className="text-right">
@@ -27,7 +27,7 @@ export const columns: ColumnDef<Item>[] = [
       );
     },
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("data"));
+      const amount = parseFloat(row.getValue("value"));
       const formatted = new Intl.NumberFormat("es-ES", {
         style: "currency",
         currency: "EUR",

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { transformData } from "@/lib/utils";
 import { IDS, IDS_SET, type Ids } from "@/config";
 import { serverClient } from "@/trpc/client";
 import { DataTable } from "@/components/data-table";
@@ -17,19 +18,15 @@ export default async function ResultPage({
 }) {
   const { dataIds } = ParamsSchema.parse(searchParams);
   const promises = dataIds.map((id) => serverClient.getData(id));
-  const [data] = await Promise.all(promises);
+  const allData = await Promise.all(promises);
+  const allCountryData = transformData(allData);
+  const [data] = allData;
 
   return (
     <div>
       <pre className="flex min-h-[calc(100vh-8rem)] items-center justify-center">
-        <DataTable columns={columns} data={data[IDS.SALARY]} />
+        <DataTable columns={columns} data={allCountryData} />
       </pre>
     </div>
   );
-}
-
-export type Data = Awaited<ReturnType<typeof serverClient.getData>>;
-
-function calculateTopFive(data: Data[]) {
-  return 3;
 }

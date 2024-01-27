@@ -6,12 +6,12 @@ import QUERIES from "./queries";
 export const appRouter = router({
   getData: publicProcedure
     .input(z.string())
-    .query(async (opts) => getData(opts.input)),
+    .query(async (opts) => await getData(opts.input)),
 });
 
 async function getData(id: string) {
   const query = QUERIES.get(id as Ids)!;
-  return query();
+  return await query();
 }
 
 export type AppRouter = typeof appRouter;
