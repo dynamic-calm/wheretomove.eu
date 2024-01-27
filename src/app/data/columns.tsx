@@ -56,4 +56,23 @@ export const columns: ColumnDef<Country>[] = [
       return <div className="text-right">{formatted}</div>;
     },
   },
+
+  {
+    id: IDS.LIFE_SATISFACTION,
+    accessorFn: (row) => row.data.lifeSatisfaction?.value ?? null,
+    header: ({ column }) => (
+      <HeaderSortable text="Overall life satisfaction" column={column} />
+    ),
+
+    cell: ({ row }) => {
+      const value = row.getValue(IDS.LIFE_SATISFACTION) as string;
+      if (!value) {
+        return <div className="text-right">-</div>;
+      }
+
+      const amount = parseFloat(value);
+
+      return <div className="text-right">{amount}</div>;
+    },
+  },
 ];

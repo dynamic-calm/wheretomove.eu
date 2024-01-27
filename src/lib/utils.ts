@@ -43,3 +43,9 @@ export function transformData(allData: AllData): Country[] {
     data,
   }));
 }
+
+export function paramsToFilter(params: Record<string, string>) {
+  return Object.entries(params).reduce((acc, [key, value]) => {
+    return { ...acc, [key]: [value] };
+  }, {});
+}

@@ -1,5 +1,6 @@
 import JSONstat from "jsonstat-toolkit";
-import { COUNTRIES, IDS, type Ids } from "@/config";
+import { paramsToFilter } from "@/lib/utils";
+import { COUNTRIES, EUROSTAT_HOST, IDS, QUERY_ARGS, type Ids } from "@/config";
 
 export interface Item {
   country: string;
@@ -7,69 +8,46 @@ export interface Item {
   unit: "EUR" | "PC_ACT";
 }
 
-async function salary() {
-  const url =
-    "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_di03?unit=EUR&sex=T&indic_il=MED_E&age=Y18-64&lang=en";
-
-  const filter = {
-    age: ["Y18-64"],
-    unit: ["EUR"],
-    sex: ["T"],
-    time: ["2022"],
-    indic_il: ["MED_E"],
-  };
-
-  const jst = await JSONstat(url);
-  const data = jst
-    .Dataset(0)
-    .Dice(filter)
-    .toTable()
-    .flatMap((item: unknown[]) => {
-      const el = item.at(-3);
-      const country = typeof el === "string" ? el : "";
-      const value = item.at(-1) ?? 0;
-      return !COUNTRIES.has(country) || !value
-        ? []
-        : [{ country, value, unit: "EUR" }];
-    })
-    .sort((a: Item, b: Item) => b.value - a.value);
-
-  return { [IDS.SALARY]: data } as Record<Ids, Item[]>;
+export interface QueryArgs {
+  dataSetCode: string;
+  params: Record<string, string>;
+  unit: string;
+  id: Ids;
 }
 
-async function unemployment() {
-  const url =
-    "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/tesem120?lang=en&lastTimePeriod=5";
+function query({ dataSetCode, params, unit, id }: QueryArgs) {
+  return async () => {
+    const parsedParams = new URLSearchParams(params);
+    const filter = paramsToFilter(params);
+    const url = `${EUROSTAT_HOST}/${dataSetCode}?${parsedParams.toString()}`;
+    const jst = await JSONstat(url);
+    const data = jst
+      .Dataset(0)
+      .Dice(filter)
+      .toTable()
+      .flatMap((item: unknown[]) => processItem(item, unit))
+      .sort((a: Item, b: Item) => b.value - a.value);
 
-  const filter = {
-    freq: ["A"],
-    age: ["Y15-74"],
-    unit: ["PC_ACT"],
-    sex: ["T"],
-    time: ["2022"],
+    return { [id]: data } as Record<Ids, Item[]>;
   };
-
-  const jst = await JSONstat(url);
-  const data = jst
-    .Dataset(0)
-    .Dice(filter)
-    .toTable()
-    .flatMap((item: unknown[]) => {
-      const el = item.at(-3);
-      const country = typeof el === "string" ? el : "";
-      const value = item.at(-1) ?? 0;
-      return !COUNTRIES.has(country) || !value
-        ? []
-        : [{ country, value, unit: "PC_ACT" }];
-    })
-    .sort((a: Item, b: Item) => b.value - a.value);
-
-  return { [IDS.UNEMPLOYMENT]: data } as Record<Ids, Item[]>;
 }
+
+function processItem(item: unknown[], unit: string) {
+  const country = item.at(-3);
+  const value = item.at(-1);
+  return COUNTRIES.has(country as string) && value
+    ? [{ country, value, unit }]
+    : [];
+}
+
+const salary = query(QUERY_ARGS.get(IDS.SALARY)!);
+const lifeSatisfaction = query(QUERY_ARGS.get(IDS.LIFE_SATISFACTION)!);
+const unemployment = query(QUERY_ARGS.get(IDS.UNEMPLOYMENT)!);
 
 const QUERIES = new Map<Ids, () => Promise<Record<Ids, Item[]>>>([
   [IDS.SALARY, salary],
   [IDS.UNEMPLOYMENT, unemployment],
+  [IDS.LIFE_SATISFACTION, lifeSatisfaction],
 ]);
 
 export default QUERIES;
