@@ -150,4 +150,30 @@ export const columns: ColumnDef<Country>[] = [
       return <div className="text-right">{formatted}</div>;
     },
   },
+  {
+    id: IDS.PRICE_OF_GOODS,
+    accessorFn: (row) => row.data.priceOfGoods?.value ?? null,
+    header: ({ column }) => (
+      <HeaderSortable text="Price levels" column={column} />
+    ),
+
+    cell: ({ row }) => {
+      const value = row.getValue(IDS.PRICE_OF_GOODS) as string;
+      if (!value) {
+        return <div className="text-right">-</div>;
+      }
+
+      const amount = parseFloat(value);
+      const formatted = new Intl.NumberFormat("es-ES", {
+        maximumFractionDigits: 2,
+        minimumFractionDigits: 2,
+      }).format(amount);
+
+      return (
+        <div className="text-right">
+          <p>{formatted} PPPs</p>
+        </div>
+      );
+    },
+  },
 ];

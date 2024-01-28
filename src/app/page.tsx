@@ -44,7 +44,7 @@ export default async function Home() {
           </p>
         </div>
       </div>
-      <div className="max-w-screen-md pt-10" id="all-data">
+      <div className="max-w-screen-lg pt-10" id="all-data">
         <p className="text-xl font-semibold">Explore all data available:</p>
         <DataTable columns={columns} data={data} />
       </div>

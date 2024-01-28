@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
 
+import { IDS } from "@/config";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -15,11 +16,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { IDS } from "@/config";
 
 const FormSchema = z.object({
-  items: z.array(z.string()).refine((value) => value.length > 1, {
-    message: "You have to select at least two items.",
+  items: z.array(z.string()).refine((value) => value.length > 0, {
+    message: "You have to select at least one items",
   }),
 });
 

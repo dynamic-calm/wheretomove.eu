@@ -11,19 +11,21 @@ export const IDS = {
   GREEN_ZONES: "greenZones",
   RISK_OF_POVERTY: "peopleAtRiskOfPoverty",
   HOUSING_COSTS_OVERBURDEN_RATE: "housingCostsOverburdenRate",
+  PRICE_OF_GOODS: "priceOfGoods",
 } as const;
 
 export const CHECKBOX_ITEMS = new Map([
-  [IDS.SALARY, "Median salary"],
+  [IDS.SALARY, "High median salary"],
   [IDS.UNEMPLOYMENT, "Low unemployment"],
   [IDS.LIFE_SATISFACTION, "Overall life satisfaction"],
   [IDS.FINANCIAL_SATISFACTION, "Financial satisfaction"],
-  [IDS.GREEN_ZONES, "Green zones"],
+  [IDS.GREEN_ZONES, "Satisfaction with green zones"],
   [IDS.RISK_OF_POVERTY, "Low number of people at risk of poverty"],
   [
     IDS.HOUSING_COSTS_OVERBURDEN_RATE,
     "Housing costs not being more that 40% of income",
   ],
+  [IDS.PRICE_OF_GOODS, "Low prices"],
 ]);
 
 export const METRIC_WEIGHTS = new Map([
@@ -34,6 +36,7 @@ export const METRIC_WEIGHTS = new Map([
   [IDS.GREEN_ZONES, 1],
   [IDS.RISK_OF_POVERTY, -1],
   [IDS.HOUSING_COSTS_OVERBURDEN_RATE, -1],
+  [IDS.PRICE_OF_GOODS, -1],
 ]);
 
 export const METRIC_RANGES = {
@@ -64,6 +67,10 @@ export const METRIC_RANGES = {
   [IDS.HOUSING_COSTS_OVERBURDEN_RATE]: {
     min: 2,
     max: 27,
+  },
+  [IDS.PRICE_OF_GOODS]: {
+    min: 40,
+    max: 175,
   },
 };
 
@@ -164,7 +171,6 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
       id: IDS.RISK_OF_POVERTY,
     },
   ],
-  //https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/tespm140?format=JSON&time=2022&unit=PC&sex=T&incgrp=TOTAL&age=TOTAL
   [
     IDS.HOUSING_COSTS_OVERBURDEN_RATE,
     {
@@ -178,6 +184,19 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
       dataSetCode: "tespm140",
       unit: "PC",
       id: IDS.HOUSING_COSTS_OVERBURDEN_RATE,
+    },
+  ],
+  [
+    IDS.PRICE_OF_GOODS,
+    {
+      params: {
+        time: "2022",
+        na_item: "PLI_EU27_2020",
+        ppp_cat: "E011",
+      },
+      dataSetCode: "tec00120",
+      unit: "PPS",
+      id: IDS.PRICE_OF_GOODS,
     },
   ],
 ]);

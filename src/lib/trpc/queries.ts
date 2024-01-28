@@ -56,6 +56,7 @@ const housingCostsOverburdenRate = generateQuery(
 const financialSatisfaction = generateQuery(
   QUERY_ARGS.get(IDS.FINANCIAL_SATISFACTION)!,
 );
+const priceOfGoods = generateQuery(QUERY_ARGS.get(IDS.PRICE_OF_GOODS)!);
 
 const QUERIES = new Map<Ids, () => Promise<Record<Ids, Item[]>>>([
   [IDS.SALARY, salary],
@@ -65,6 +66,7 @@ const QUERIES = new Map<Ids, () => Promise<Record<Ids, Item[]>>>([
   [IDS.FINANCIAL_SATISFACTION, financialSatisfaction],
   [IDS.RISK_OF_POVERTY, riskOfPoverty],
   [IDS.HOUSING_COSTS_OVERBURDEN_RATE, housingCostsOverburdenRate],
+  [IDS.PRICE_OF_GOODS, priceOfGoods],
 ]);
 
 export default QUERIES;
