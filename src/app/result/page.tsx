@@ -1,10 +1,10 @@
 import { z } from "zod";
 import { IDS_SET, type Ids } from "@/config";
-import { serverClient } from "@/trpc/client";
+import { serverClient } from "@/lib/trpc/client";
 import { getScore, transformData } from "@/lib/utils";
 import { DataTable } from "@/components/data-table";
 import { columns } from "./columns";
-import { ArrowRightIcon, ArrowLeftIcon } from "@radix-ui/react-icons";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 

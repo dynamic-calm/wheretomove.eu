@@ -1,5 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import { serverClient } from "@/trpc/client";
+import { serverClient } from "@/lib/trpc/client";
 import { METRIC_RANGES, METRIC_WEIGHTS, type Ids } from "@/config";
 import { type ClassValue, clsx } from "clsx";
 

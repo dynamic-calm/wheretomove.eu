@@ -1,4 +1,4 @@
-import type { QueryArgs } from "./trpc/queries";
+import type { QueryArgs } from "./lib/trpc/queries";
 
 export const EUROSTAT_HOST =
   "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data";

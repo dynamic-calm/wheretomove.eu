@@ -1,6 +1,6 @@
 import { transformData } from "@/lib/utils";
 import { IDS_SET } from "@/config";
-import { serverClient } from "@/trpc/client";
+import { serverClient } from "@/lib/trpc/client";
 import { DataTable } from "@/components/data-table";
 import { columns } from "./columns";
 
