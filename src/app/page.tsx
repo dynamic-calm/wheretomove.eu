@@ -1,18 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
-import whiteIllustration from "../../public/ilu-no-bg-black.png";
-import blackIllustration from "../../public/ilu-no-bg-white.png";
 import eurostat from "../../public/eurostat.png";
 import getAllData from "@/lib/trpc/all";
-import { Button } from "@/components/ui/button";
-import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { columns } from "./data/columns";
-import { DataTable } from "@/components/data-table";
+import StartButton from "@/components/start-button";
+import LandingPageIllustration from "@/components/landing-page-illustration";
 import { It } from "@/components/italic";
+import { DataTable } from "@/components/tables/data-table";
+import { columns } from "../components/tables/full-data-columns";
 
 export default async function Home() {
   const data = await getAllData();
-  
+
   return (
     <div className="flex flex-col items-center justify-between pt-10 md:w-2/3">
       <div className="flex flex-col items-center px-10 text-center">
@@ -21,30 +19,8 @@ export default async function Home() {
           Discover your ideal country based on data.
         </h3>
       </div>
-      <div className="flex flex-col items-center justify-center py-8">
-        <Image
-          className="hidden w-auto dark:block"
-          src={blackIllustration}
-          alt="Person sitting next to window thinking"
-          priority
-          height={300}
-          width={300}
-        />
-        <Image
-          className="block w-auto dark:hidden"
-          src={whiteIllustration}
-          alt="Person sitting next to window thinking"
-          priority
-          height={300}
-          width={300}
-        />
-      </div>
-      <Link href="/select" className="pb-8">
-        <Button className="pt-2">
-          <p className="pr-2">Start</p>
-          <ArrowRightIcon />
-        </Button>
-      </Link>
+      <LandingPageIllustration />
+      <StartButton />
       <div className="flex w-96 flex-col items-center px-10 py-6 text-center md:w-2/3">
         <h3 className="py-4 text-4xl font-bold">
           Inspired by Daniel Kahneman's <It>"Thinking, Fast and Slow"</It>
@@ -57,7 +33,13 @@ export default async function Home() {
           </It>
         </p>
       </div>
-      <DataTable columns={columns} data={data} />
+      <div className="pt-10">
+        <p className="text-left text-xl font-semibold">
+          Explore all data available:
+        </p>
+        <DataTable columns={columns} data={data} />
+      </div>
+      <StartButton />
       <Link target="_blank" href="https://ec.europa.eu/eurostat">
         <Image
           src={eurostat}

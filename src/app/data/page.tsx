@@ -1,6 +1,6 @@
 import getAllData from "@/lib/trpc/all";
-import { DataTable } from "@/components/data-table";
-import { columns } from "./columns";
+import { DataTable } from "@/components/tables/data-table";
+import { columns } from "../../components/tables/full-data-columns";
 
 export default async function Data() {
   const data = await getAllData();
