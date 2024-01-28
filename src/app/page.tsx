@@ -13,15 +13,15 @@ export default async function Home() {
   const data = await getAllData();
 
   return (
-    <div className="flex flex-col items-center justify-between pt-10 md:w-2/3">
-      <div className="flex flex-col items-center px-10 text-center">
+    <div className="flex w-auto max-w-[22.5rem] flex-col items-center justify-between pt-10 md:max-w-screen-md lg:max-w-screen-lg">
+      <div className="flex flex-col items-center justify-center text-center">
         <h2 className="text-5xl font-bold">Where should I move?</h2>
-        <div className="flex max-w-screen-md flex-col items-center px-10 pb-6 pt-2 text-left">
+        <div className="flex flex-col items-center justify-center pb-6 pt-2 text-left">
           <h3 className="text-lg text-neutral-600 dark:text-neutral-300">
             Inspired by Daniel Kahneman's <It>"Thinking, Fast and Slow".</It>
           </h3>
           <LandingPageIllustration />
-          <div className="flex space-x-2 pt-4">
+          <div className="flex space-x-8 pt-4">
             <StartButton />
             <Link href="/#all-data">
               <Button
@@ -32,10 +32,11 @@ export default async function Home() {
               </Button>
             </Link>
           </div>
+          <div></div>
           <h3 className="pb-4 pt-6 text-3xl font-bold">
             Discover your ideal country based on data
           </h3>
-          <p className="pb-3 text-left text-lg text-neutral-600 dark:text-neutral-300">
+          <p className="pb-3 text-lg text-neutral-600 dark:text-neutral-300">
             <It>
               “Intuition adds value even in the justly derided selection
               interview, but only after a disciplined collection of objective
@@ -44,12 +45,15 @@ export default async function Home() {
           </p>
         </div>
       </div>
-      <div className="max-w-screen-lg pt-10" id="all-data">
+      <div
+        className="w-auto  max-w-[22.5rem] pt-10 md:max-w-screen-md lg:max-w-screen-lg"
+        id="all-data"
+      >
         <p className="text-xl font-semibold">Explore all data available:</p>
         <DataTable columns={columns} data={data} />
       </div>
       <StartButton />
-      <div className="flex max-w-screen-md flex-col items-center px-10 pt-2">
+      <div className="flex flex-col items-center pt-2">
         <h3 className="py-4 text-3xl font-bold">
           How the scoring system works
         </h3>
@@ -62,7 +66,7 @@ export default async function Home() {
           </It>
         </p>
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center justify-center">
         <p className="text-neutral-600 dark:text-neutral-300">
           Data powered by
         </p>
