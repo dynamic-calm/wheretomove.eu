@@ -12,28 +12,6 @@ export const columns: ColumnDef<Country>[] = [
     enableHiding: false,
   },
   {
-    id: IDS.SALARY,
-    accessorFn: (row) => row.data.salary?.value ?? null,
-    header: ({ column }) => (
-      <HeaderSortable text="Median salary" column={column} />
-    ),
-
-    cell: ({ row }) => {
-      const value = row.getValue(IDS.SALARY) as string;
-      if (!value) {
-        return <div className="text-right">-</div>;
-      }
-
-      const amount = parseFloat(value);
-      const formatted = new Intl.NumberFormat("es-ES", {
-        style: "currency",
-        currency: "EUR",
-      }).format(amount);
-
-      return <div className="text-right">{`${formatted}/yr`}</div>;
-    },
-  },
-  {
     id: IDS.UNEMPLOYMENT,
     accessorFn: (row) => row.data.unemployment?.value ?? null,
     header: ({ column }) => (
@@ -53,6 +31,28 @@ export const columns: ColumnDef<Country>[] = [
       }).format(amount / 100);
 
       return <div className="text-right">{formatted}</div>;
+    },
+  },
+  {
+    id: IDS.SALARY,
+    accessorFn: (row) => row.data.salary?.value ?? null,
+    header: ({ column }) => (
+      <HeaderSortable text="Median salary" column={column} />
+    ),
+
+    cell: ({ row }) => {
+      const value = row.getValue(IDS.SALARY) as string;
+      if (!value) {
+        return <div className="text-right">-</div>;
+      }
+
+      const amount = parseFloat(value);
+      const formatted = new Intl.NumberFormat("es-ES", {
+        style: "currency",
+        currency: "EUR",
+      }).format(amount);
+
+      return <div className="text-right">{`${formatted}/yr`}</div>;
     },
   },
   {
