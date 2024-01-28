@@ -30,9 +30,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          {children}
-          <Footer />
+          <div className="flex h-screen flex-col items-center justify-between">
+            <Header />
+            {children}
+            <Footer />
+          </div>
           <Toaster />
         </ThemeProvider>
       </body>

@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header>
-      <div className="flex min-w-max items-center justify-between p-2">
+      <div className="flex w-screen items-center justify-around p-2">
         <Link href="/">
           <div className="flex cursor-pointer items-center ">
             <Image

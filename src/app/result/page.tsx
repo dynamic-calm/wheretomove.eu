@@ -26,28 +26,25 @@ export default async function ResultPage({
   const scores = getScore(allCountryData, dataIds);
 
   return (
-    <div className="flex min-h-[calc(100vh-8rem)] flex-col items-center justify-around text-left">
-      <div>
-        <p>
-          {"You should move to "}
-          <span className="font-bold">{scores.at(0)?.country}</span>
-          {" based on your priorities."}
-        </p>
-        <DataTable columns={columns} data={scores} />
-      </div>
-      <div className="flex w-80 items-center justify-around">
+    <div className="text-left">
+      {/* <p className="text-lg">
+        {"You should move to "}
+        <span className="font-bold">{scores.at(0)?.country}</span>
+      </p> */}
+      <DataTable columns={columns} data={scores} />
+      {/* <div className="flex items-center justify-start space-x-2 py-4">
         <Link href="/select">
-          <Button variant="secondary">
+          <Button variant="outline" size="sm">
             <p className="pr-2">Try again</p>
             <ArrowLeftIcon />
           </Button>
         </Link>
         <Link href="/data">
-          <Button>
-            <p className="pr-2">Check all data</p>
+          <Button variant="outline" size="sm">
+            <p>Check all data</p>
           </Button>
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 }

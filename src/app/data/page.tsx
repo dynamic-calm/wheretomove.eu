@@ -10,8 +10,8 @@ export default async function Data() {
   const allCountryData = transformData(allData);
 
   return (
-    <div className="flex min-h-[calc(100vh-10rem)] flex-col items-center justify-around">
-      <DataTable columns={columns} data={allCountryData}/>
-    </div>
+    <>
+      <DataTable columns={columns} data={allCountryData} />
+    </>
   );
 }
