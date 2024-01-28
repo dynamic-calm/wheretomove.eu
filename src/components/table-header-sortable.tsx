@@ -14,6 +14,7 @@ export default function HeaderSortable({
         {
           country: string;
           score: number;
+          position: number;
         },
         unknown
       >;

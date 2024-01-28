@@ -1,17 +1,13 @@
-import { transformData } from "@/lib/utils";
-import { IDS_SET } from "@/config";
-import { serverClient } from "@/lib/trpc/client";
+import getAllData from "@/lib/trpc/all";
 import { DataTable } from "@/components/data-table";
 import { columns } from "./columns";
 
 export default async function Data() {
-  const promises = [...IDS_SET].map((id) => serverClient.getData(id));
-  const allData = await Promise.all(promises);
-  const allCountryData = transformData(allData);
-
+  const data = await getAllData();
+  
   return (
     <>
-      <DataTable columns={columns} data={allCountryData} />
+      <DataTable columns={columns} data={data} />
     </>
   );
 }

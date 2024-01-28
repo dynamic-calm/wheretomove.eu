@@ -64,5 +64,10 @@ export function getScore(allCountryData: Country[], dataIds: Ids[]) {
     return { country, score };
   });
 
-  return data.sort((a, b) => b.score - a.score);
+  return data
+    .sort((a, b) => b.score - a.score)
+    .map((item, index) => ({
+      ...item,
+      position: index + 1,
+    }));
 }

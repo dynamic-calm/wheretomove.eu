@@ -8,13 +8,20 @@ type Result = ReturnType<typeof getScore>[number];
 
 export const columns: ColumnDef<Result>[] = [
   {
+    accessorFn: (row) => row.position,
+    header: "Position",
+    enableHiding: false,
+  },
+  {
     accessorKey: "country",
     header: "Country",
     enableHiding: false,
   },
   {
     accessorKey: "score",
-    header: ({ column }) => <HeaderSortable text="Overall score" column={column} />,
+    header: ({ column }) => (
+      <HeaderSortable text="Overall score" column={column} />
+    ),
 
     cell: ({ row }) => {
       const value = row.getValue("score") as string;

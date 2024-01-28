@@ -3,22 +3,18 @@ import Image from "next/image";
 import whiteIllustration from "../../public/ilu-no-bg-black.png";
 import blackIllustration from "../../public/ilu-no-bg-white.png";
 import eurostat from "../../public/eurostat.png";
+import getAllData from "@/lib/trpc/all";
 import { Button } from "@/components/ui/button";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { columns } from "./data/columns";
 import { DataTable } from "@/components/data-table";
-import { IDS_SET } from "@/config";
-import { serverClient } from "@/lib/trpc/client";
-import { transformData } from "@/lib/utils";
 import { It } from "@/components/italic";
 
 export default async function Home() {
-  const promises = [...IDS_SET].map((id) => serverClient.getData(id));
-  const allData = await Promise.all(promises);
-  const allCountryData = transformData(allData);
-
+  const data = await getAllData();
+  
   return (
-    <div className="flex flex-col items-center justify-between pt-12 md:w-2/3">
+    <div className="flex flex-col items-center justify-between pt-10 md:w-2/3">
       <div className="flex flex-col items-center px-10 text-center">
         <h2 className="text-6xl font-bold">Where should I move?</h2>
         <h3 className="pt-3 text-2xl font-semibold">
@@ -61,7 +57,7 @@ export default async function Home() {
           </It>
         </p>
       </div>
-      <DataTable columns={columns} data={allCountryData} />
+      <DataTable columns={columns} data={data} />
       <Link target="_blank" href="https://ec.europa.eu/eurostat">
         <Image
           src={eurostat}
