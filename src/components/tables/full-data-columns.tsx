@@ -128,4 +128,26 @@ export const columns: ColumnDef<Country>[] = [
       return <div className="text-right">{formatted}</div>;
     },
   },
+  {
+    id: IDS.HOUSING_COSTS_OVERBURDEN_RATE,
+    accessorFn: (row) => row.data.housingCostsOverburdenRate?.value ?? null,
+    header: ({ column }) => (
+      <HeaderSortable text="Housing costs overburden rate" column={column} />
+    ),
+
+    cell: ({ row }) => {
+      const value = row.getValue(IDS.HOUSING_COSTS_OVERBURDEN_RATE) as string;
+      if (!value) {
+        return <div className="text-right">-</div>;
+      }
+
+      const amount = parseFloat(value);
+      const formatted = new Intl.NumberFormat("es-ES", {
+        style: "percent",
+        minimumFractionDigits: 1,
+      }).format(amount / 100);
+
+      return <div className="text-right">{formatted}</div>;
+    },
+  },
 ];

@@ -20,15 +20,12 @@ function generateQuery({ dataSetCode, params, unit, id }: QueryArgs) {
     const filter = toFilter(params);
     const url = `${EUROSTAT_HOST}/${dataSetCode}?${parsedParams.toString()}`;
     const jst = await JSONstat(url);
-    const test = jst
-    .Dataset(0)
-    .Dice(filter)
-    .toTable()
+    const test = jst.Dataset(0).Dice(filter).toTable();
 
-    if(id === IDS.RISK_OF_POVERTY) {
-      console.log(test)
+    if (id === IDS.HOUSING_COSTS_OVERBURDEN_RATE) {
+      console.log(test);
     }
-  
+
     const data = jst
       .Dataset(0)
       .Dice(filter)
@@ -59,6 +56,9 @@ const lifeSatisfaction = generateQuery(QUERY_ARGS.get(IDS.LIFE_SATISFACTION)!);
 const unemployment = generateQuery(QUERY_ARGS.get(IDS.UNEMPLOYMENT)!);
 const greenZones = generateQuery(QUERY_ARGS.get(IDS.GREEN_ZONES)!);
 const riskOfPoverty = generateQuery(QUERY_ARGS.get(IDS.RISK_OF_POVERTY)!);
+const housingCostsOverburdenRate = generateQuery(
+  QUERY_ARGS.get(IDS.HOUSING_COSTS_OVERBURDEN_RATE)!,
+);
 const financialSatisfaction = generateQuery(
   QUERY_ARGS.get(IDS.FINANCIAL_SATISFACTION)!,
 );
@@ -70,6 +70,7 @@ const QUERIES = new Map<Ids, () => Promise<Record<Ids, Item[]>>>([
   [IDS.GREEN_ZONES, greenZones],
   [IDS.FINANCIAL_SATISFACTION, financialSatisfaction],
   [IDS.RISK_OF_POVERTY, riskOfPoverty],
+  [IDS.HOUSING_COSTS_OVERBURDEN_RATE, housingCostsOverburdenRate],
 ]);
 
 export default QUERIES;

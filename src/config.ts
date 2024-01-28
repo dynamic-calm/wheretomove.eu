@@ -10,6 +10,7 @@ export const IDS = {
   FINANCIAL_SATISFACTION: "financialSatisfaction",
   GREEN_ZONES: "greenZones",
   RISK_OF_POVERTY: "peopleAtRiskOfPoverty",
+  HOUSING_COSTS_OVERBURDEN_RATE: "housingCostsOverburdenRate",
 } as const;
 
 export const CHECKBOX_ITEMS = new Map([
@@ -19,6 +20,10 @@ export const CHECKBOX_ITEMS = new Map([
   [IDS.FINANCIAL_SATISFACTION, "Financial satisfaction"],
   [IDS.GREEN_ZONES, "Green zones"],
   [IDS.RISK_OF_POVERTY, "Low number of people at risk of poverty"],
+  [
+    IDS.HOUSING_COSTS_OVERBURDEN_RATE,
+    "Housing costs not being more that 40% of income",
+  ],
 ]);
 
 export const METRIC_WEIGHTS = new Map([
@@ -28,6 +33,7 @@ export const METRIC_WEIGHTS = new Map([
   [IDS.FINANCIAL_SATISFACTION, 1],
   [IDS.GREEN_ZONES, 1],
   [IDS.RISK_OF_POVERTY, -1],
+  [IDS.HOUSING_COSTS_OVERBURDEN_RATE, -1],
 ]);
 
 export const METRIC_RANGES = {
@@ -54,6 +60,10 @@ export const METRIC_RANGES = {
   [IDS.RISK_OF_POVERTY]: {
     min: 0,
     max: 50,
+  },
+  [IDS.HOUSING_COSTS_OVERBURDEN_RATE]: {
+    min: 2,
+    max: 27,
   },
 };
 
@@ -152,6 +162,22 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
       dataSetCode: "ilc_peps01n",
       unit: "PC_POP",
       id: IDS.RISK_OF_POVERTY,
+    },
+  ],
+  //https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/tespm140?format=JSON&time=2022&unit=PC&sex=T&incgrp=TOTAL&age=TOTAL
+  [
+    IDS.HOUSING_COSTS_OVERBURDEN_RATE,
+    {
+      params: {
+        time: "2022",
+        unit: "PC",
+        sex: "T",
+        incgrp: "TOTAL",
+        age: "TOTAL",
+      },
+      dataSetCode: "tespm140",
+      unit: "PC",
+      id: IDS.HOUSING_COSTS_OVERBURDEN_RATE,
     },
   ],
 ]);

@@ -17,11 +17,11 @@ export default async function Home() {
       <div className="flex flex-col items-center px-10 text-center">
         <h2 className="text-6xl font-bold">Where should I move?</h2>
         <div className="flex w-96 flex-col items-center px-10 pb-6 pt-2 text-left md:w-2/3">
-          <h3 className="text-xl text-neutral-600 dark:text-neutral-300">
+          <h3 className="text-lg text-neutral-600 dark:text-neutral-300">
             Inspired by Daniel Kahneman's <It>"Thinking, Fast and Slow".</It>
           </h3>
           <LandingPageIllustration />
-          <div className="flex space-x-2">
+          <div className="flex space-x-2 pt-4">
             <StartButton />
             <Link href="/#all-data">
               <Button variant="link" className="mb-14">
@@ -41,7 +41,7 @@ export default async function Home() {
           </p>
         </div>
       </div>
-      <div className="pt-10" id="all-data">
+      <div className="max-w-screen-md pt-10" id="all-data">
         <p className="text-left text-xl font-semibold">
           Explore all data available:
         </p>
@@ -54,18 +54,15 @@ export default async function Home() {
         </h3>
         <p className="text-neutral text-xl text-neutral-600 dark:text-neutral-300">
           <It>
-            The scoring system is tailored to your preferences, analyzing the
-            data points you select. Each metric, be it salary, unemployment, or
-            life satisfaction, adds to a country's total score. The more metrics
-            you include, the higher the potential score, as each aspect adds to
-            the overall total. I calculate scores on a 0 to 10 scale for each
-            metric, with higher scores signifying more favorable conditions in
-            the context of your chosen criteria.
+            The scoring is based on the data points you select. Each metric adds
+            to a country's total score. The more metrics you include, the higher
+            the potential score, as each aspect adds to the overall total. The
+            scores get calculated on a 0 to 10 scale for each metric.
           </It>
         </p>
       </div>
       <div className="flex items-center">
-        <p className="text-neutral-600 dark:text-neutral-300">
+        <p className="text-neutral-700 dark:text-neutral-200">
           Data powered by
         </p>
         <Link target="_blank" href="https://ec.europa.eu/eurostat">
@@ -74,7 +71,7 @@ export default async function Home() {
             height={150}
             width={150}
             alt="eurostat logo"
-            className="py-7"
+            className="py-6"
           />
         </Link>
       </div>
