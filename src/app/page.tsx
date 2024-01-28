@@ -13,7 +13,7 @@ export default async function Home() {
   const data = await getAllData();
 
   return (
-    <div className="flex w-auto max-w-[22.5rem] flex-col items-center justify-between pt-10 md:max-w-screen-md lg:max-w-screen-lg">
+    <div className="flex w-auto max-w-[22.5rem] flex-col items-center justify-between pt-10 md:max-w-[40rem]">
       <div className="flex flex-col items-center justify-center text-center">
         <h2 className="text-5xl font-bold">Where should I move?</h2>
         <div className="flex flex-col items-center justify-center pb-6 pt-2 text-left">

@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${inter.className} flex min-h-screen flex-col antialiased`}
+        className={`${inter.className} flex min-h-screen flex-col overflow-x-hidden antialiased`}
       >
         <ThemeProvider
           attribute="class"
