@@ -14,10 +14,10 @@ export interface QueryArgs {
   id: Ids;
 }
 
-function query({ dataSetCode, params, unit, id }: QueryArgs) {
+function generateQuery({ dataSetCode, params, unit, id }: QueryArgs) {
   return async () => {
     const parsedParams = new URLSearchParams(params);
-    const filter = paramsToFilter(params);
+    const filter = toFilter(params);
     const url = `${EUROSTAT_HOST}/${dataSetCode}?${parsedParams.toString()}`;
     const jst = await JSONstat(url);
     const data = jst
@@ -31,7 +31,7 @@ function query({ dataSetCode, params, unit, id }: QueryArgs) {
   };
 }
 
-function paramsToFilter(params: Record<string, string>) {
+function toFilter(params: Record<string, string>) {
   return Object.entries(params).reduce((acc, [key, value]) => {
     return { ...acc, [key]: [value] };
   }, {});
@@ -45,20 +45,20 @@ function processItem(item: unknown[], unit: string) {
     : [];
 }
 
-const salary = query(QUERY_ARGS.get(IDS.SALARY)!);
-const lifeSatisfaction = query(QUERY_ARGS.get(IDS.LIFE_SATISFACTION)!);
-const unemployment = query(QUERY_ARGS.get(IDS.UNEMPLOYMENT)!);
-const financialSatisfaction = query(
+const salary = generateQuery(QUERY_ARGS.get(IDS.SALARY)!);
+const lifeSatisfaction = generateQuery(QUERY_ARGS.get(IDS.LIFE_SATISFACTION)!);
+const unemployment = generateQuery(QUERY_ARGS.get(IDS.UNEMPLOYMENT)!);
+const greenZones = generateQuery(QUERY_ARGS.get(IDS.GREEN_ZONES)!);
+const financialSatisfaction = generateQuery(
   QUERY_ARGS.get(IDS.FINANCIAL_SATISFACTION)!,
 );
-const greenZones = query(QUERY_ARGS.get(IDS.GREEN_ZONES)!);
 
 const QUERIES = new Map<Ids, () => Promise<Record<Ids, Item[]>>>([
   [IDS.SALARY, salary],
   [IDS.UNEMPLOYMENT, unemployment],
   [IDS.LIFE_SATISFACTION, lifeSatisfaction],
-  [IDS.FINANCIAL_SATISFACTION, financialSatisfaction],
   [IDS.GREEN_ZONES, greenZones],
+  [IDS.FINANCIAL_SATISFACTION, financialSatisfaction],
 ]);
 
 export default QUERIES;

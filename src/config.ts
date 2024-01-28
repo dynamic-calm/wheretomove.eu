@@ -170,5 +170,4 @@ export const COUNTRIES = new Set([
   "Albania",
   "Serbia",
   "Türkiye",
-  "Kosovo*",
 ]);
