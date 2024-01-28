@@ -50,6 +50,7 @@ export const columns: ColumnDef<Country>[] = [
       const formatted = new Intl.NumberFormat("es-ES", {
         style: "currency",
         currency: "EUR",
+        maximumFractionDigits: 0,
       }).format(amount);
 
       return <div className="text-right">{`${formatted}/yr`}</div>;
@@ -151,22 +152,22 @@ export const columns: ColumnDef<Country>[] = [
     },
   },
   {
-    id: IDS.PRICE_OF_GOODS,
-    accessorFn: (row) => row.data.priceOfGoods?.value ?? null,
+    id: IDS.COL,
+    accessorFn: (row) => row.data.costOfLiving?.value ?? null,
     header: ({ column }) => (
-      <HeaderSortable text="Price levels" column={column} />
+      <HeaderSortable text="Cost of living" column={column} />
     ),
 
     cell: ({ row }) => {
-      const value = row.getValue(IDS.PRICE_OF_GOODS) as string;
+      const value = row.getValue(IDS.COL) as string;
       if (!value) {
         return <div className="text-right">-</div>;
       }
 
       const amount = parseFloat(value);
       const formatted = new Intl.NumberFormat("es-ES", {
-        maximumFractionDigits: 2,
-        minimumFractionDigits: 2,
+        maximumFractionDigits: 1,
+        minimumFractionDigits: 1,
       }).format(amount);
 
       return (

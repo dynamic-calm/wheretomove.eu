@@ -11,7 +11,7 @@ export const IDS = {
   GREEN_ZONES: "greenZones",
   RISK_OF_POVERTY: "peopleAtRiskOfPoverty",
   HOUSING_COSTS_OVERBURDEN_RATE: "housingCostsOverburdenRate",
-  PRICE_OF_GOODS: "priceOfGoods",
+  COL: "costOfLiving",
 } as const;
 
 export const CHECKBOX_ITEMS = new Map([
@@ -25,7 +25,7 @@ export const CHECKBOX_ITEMS = new Map([
     IDS.HOUSING_COSTS_OVERBURDEN_RATE,
     "Housing costs not being more that 40% of income",
   ],
-  [IDS.PRICE_OF_GOODS, "Low prices"],
+  [IDS.COL, "Low prices"],
 ]);
 
 export const METRIC_WEIGHTS = new Map([
@@ -36,7 +36,7 @@ export const METRIC_WEIGHTS = new Map([
   [IDS.GREEN_ZONES, 1],
   [IDS.RISK_OF_POVERTY, -1],
   [IDS.HOUSING_COSTS_OVERBURDEN_RATE, -1],
-  [IDS.PRICE_OF_GOODS, -1],
+  [IDS.COL, -1],
 ]);
 
 export const METRIC_RANGES = {
@@ -68,7 +68,7 @@ export const METRIC_RANGES = {
     min: 2,
     max: 27,
   },
-  [IDS.PRICE_OF_GOODS]: {
+  [IDS.COL]: {
     min: 40,
     max: 175,
   },
@@ -187,7 +187,7 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
     },
   ],
   [
-    IDS.PRICE_OF_GOODS,
+    IDS.COL,
     {
       params: {
         time: "2022",
@@ -196,7 +196,7 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
       },
       dataSetCode: "tec00120",
       unit: "PPS",
-      id: IDS.PRICE_OF_GOODS,
+      id: IDS.COL,
     },
   ],
 ]);
