@@ -22,8 +22,8 @@ export default async function Home() {
           </h3>
           <LandingPageIllustration />
           <div className="flex space-x-2">
+            <StartButton />
             <Link href="/#all-data">
-              <StartButton />
               <Button variant="link" className="mb-14">
                 Check data
               </Button>
@@ -55,25 +55,29 @@ export default async function Home() {
         <p className="text-neutral text-xl text-neutral-600 dark:text-neutral-300">
           <It>
             The scoring system is tailored to your preferences, analyzing the
-            data points you select to ensure relevance to your needs. Each
-            metric, be it salary, unemployment, or life satisfaction,
-            contributes positively to a country's total score. The more metrics
+            data points you select. Each metric, be it salary, unemployment, or
+            life satisfaction, adds to a country's total score. The more metrics
             you include, the higher the potential score, as each aspect adds to
-            the overall total. We calculate scores on a 0 to 10 scale for each
+            the overall total. I calculate scores on a 0 to 10 scale for each
             metric, with higher scores signifying more favorable conditions in
             the context of your chosen criteria.
           </It>
         </p>
       </div>
-      <Link target="_blank" href="https://ec.europa.eu/eurostat">
-        <Image
-          src={eurostat}
-          height={150}
-          width={150}
-          alt="eurostat logo"
-          className="py-7"
-        />
-      </Link>
+      <div className="flex items-center">
+        <p className="text-neutral-600 dark:text-neutral-300">
+          Data powered by
+        </p>
+        <Link target="_blank" href="https://ec.europa.eu/eurostat">
+          <Image
+            src={eurostat}
+            height={150}
+            width={150}
+            alt="eurostat logo"
+            className="py-7"
+          />
+        </Link>
+      </div>
     </div>
   );
 }
