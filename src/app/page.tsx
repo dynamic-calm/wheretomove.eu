@@ -33,7 +33,7 @@ export default async function Home() {
           </It>
         </p>
       </div>
-      <div className="pt-10">
+      <div className="pt-10" id="all-data">
         <p className="text-left text-xl font-semibold">
           Explore all data available:
         </p>

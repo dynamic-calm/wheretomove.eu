@@ -1,5 +1,5 @@
 import { Column } from "@tanstack/react-table";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { ArrowUpDown } from "lucide-react";
 import type { Country } from "@/lib/utils";
 

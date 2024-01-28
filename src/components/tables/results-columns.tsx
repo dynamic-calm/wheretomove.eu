@@ -1,6 +1,6 @@
 "use client";
 
-import HeaderSortable from "@/components/table-header-sortable";
+import HeaderSortable from "@/components/tables/table-header-sortable";
 import { getScore } from "@/lib/utils";
 import type { ColumnDef } from "@tanstack/react-table";
 

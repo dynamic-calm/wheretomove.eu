@@ -1,6 +1,6 @@
 "use client";
 
-import HeaderSortable from "@/components/table-header-sortable";
+import HeaderSortable from "@/components/tables/table-header-sortable";
 import { IDS } from "@/config";
 import type { ColumnDef } from "@tanstack/react-table";
 import type { Country } from "@/lib/utils";
