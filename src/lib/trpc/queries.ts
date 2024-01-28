@@ -20,12 +20,6 @@ function generateQuery({ dataSetCode, params, unit, id }: QueryArgs) {
     const filter = toFilter(params);
     const url = `${EUROSTAT_HOST}/${dataSetCode}?${parsedParams.toString()}`;
     const jst = await JSONstat(url);
-    const test = jst.Dataset(0).Dice(filter).toTable();
-
-    if (id === IDS.HOUSING_COSTS_OVERBURDEN_RATE) {
-      console.log(test);
-    }
-
     const data = jst
       .Dataset(0)
       .Dice(filter)
