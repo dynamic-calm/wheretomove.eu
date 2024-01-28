@@ -15,8 +15,8 @@ export default async function Home() {
     <div className="flex flex-col items-center justify-between pt-10 md:w-2/3">
       <div className="flex flex-col items-center px-10 text-center">
         <h2 className="text-6xl font-bold">Where should I move?</h2>
-        <h3 className="pt-3 text-2xl font-semibold">
-          Discover your ideal country based on data.
+        <h3 className="pt-3 text-2xl">
+          <It>Discover your ideal country based on data</It>
         </h3>
       </div>
       <LandingPageIllustration />
@@ -25,7 +25,7 @@ export default async function Home() {
         <h3 className="py-4 text-4xl font-bold">
           Inspired by Daniel Kahneman's <It>"Thinking, Fast and Slow"</It>
         </h3>
-        <p className="text-lg">
+        <p className="text-left text-lg">
           <It>
             “Intuition adds value even in the justly derided selection
             interview, but only after a disciplined collection of objective info
@@ -40,13 +40,30 @@ export default async function Home() {
         <DataTable columns={columns} data={data} />
       </div>
       <StartButton />
+      <div className="flex w-96 flex-col items-start px-10 pt-2 text-left md:w-2/3">
+        <h3 className="py-4 text-4xl font-bold">
+          How the scoring system works
+        </h3>
+        <p className="text-neutral text-xl">
+          <It>
+            The scoring system is tailored to your preferences, analyzing the
+            data points you select to ensure relevance to your needs. Each
+            metric, be it salary, unemployment, or life satisfaction,
+            contributes positively to a country's total score. The more metrics
+            you include, the higher the potential score, as each aspect adds to
+            the overall total. We calculate scores on a 0 to 10 scale for each
+            metric, with higher scores signifying more favorable conditions in
+            the context of your chosen criteria.
+          </It>
+        </p>
+      </div>
       <Link target="_blank" href="https://ec.europa.eu/eurostat">
         <Image
           src={eurostat}
           height={150}
           width={150}
           alt="eurostat logo"
-          className="pb-7"
+          className="py-7"
         />
       </Link>
     </div>
