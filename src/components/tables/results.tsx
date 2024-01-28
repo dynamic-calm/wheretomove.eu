@@ -24,11 +24,18 @@ export default function Results({
       {showRanking ? (
         <>
           <DataTable columns={columns} data={scores} />
-          <Link href="/select">
-            <Button variant="secondary" className="mb-14">
-              Try again <ArrowLeftIcon className="ml-2" />
-            </Button>
-          </Link>
+          <div className="flex space-x-2">
+            <Link href="/select">
+              <Button variant="secondary" className="mb-14">
+                Try again <ArrowLeftIcon className="ml-2" />
+              </Button>
+            </Link>
+            <Link href="/#all-data">
+              <Button variant="link" className="mb-14">
+                Check all data
+              </Button>
+            </Link>
+          </div>
         </>
       ) : (
         <div className="flex flex-col items-center justify-center">

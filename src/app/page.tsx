@@ -7,6 +7,7 @@ import LandingPageIllustration from "@/components/landing-page-illustration";
 import { It } from "@/components/italic";
 import { DataTable } from "@/components/tables/data-table";
 import { columns } from "../components/tables/full-data-columns";
+import { Button } from "@/components/ui/button";
 
 export default async function Home() {
   const data = await getAllData();
@@ -20,7 +21,14 @@ export default async function Home() {
             Inspired by Daniel Kahneman's <It>"Thinking, Fast and Slow".</It>
           </h3>
           <LandingPageIllustration />
-          <StartButton />
+          <div className="flex space-x-2">
+            <Link href="/#all-data">
+              <StartButton />
+              <Button variant="link" className="mb-14">
+                Check data
+              </Button>
+            </Link>
+          </div>
           <h3 className="pb-4 pt-6 text-4xl font-bold">
             Discover your ideal country based on data
           </h3>
