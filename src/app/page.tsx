@@ -62,7 +62,7 @@ export default async function Home() {
         </p>
       </div>
       <div className="flex items-center">
-        <p className="text-neutral-700 dark:text-neutral-200">
+        <p className="text-neutral-600 dark:text-neutral-300">
           Data powered by
         </p>
         <Link target="_blank" href="https://ec.europa.eu/eurostat">
