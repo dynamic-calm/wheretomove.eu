@@ -15,23 +15,23 @@ export default async function Home() {
     <div className="flex flex-col items-center justify-between pt-10 md:w-2/3">
       <div className="flex flex-col items-center px-10 text-center">
         <h2 className="text-6xl font-bold">Where should I move?</h2>
-        <h3 className="pt-3 text-2xl">
-          <It>Discover your ideal country based on data</It>
-        </h3>
-      </div>
-      <LandingPageIllustration />
-      <StartButton />
-      <div className="flex w-96 flex-col items-center px-10 py-6 text-center md:w-2/3">
-        <h3 className="py-4 text-4xl font-bold">
-          Inspired by Daniel Kahneman's <It>"Thinking, Fast and Slow"</It>
-        </h3>
-        <p className="text-left text-lg">
-          <It>
-            “Intuition adds value even in the justly derided selection
-            interview, but only after a disciplined collection of objective info
-            and disciplined scoring of separate traits.”
-          </It>
-        </p>
+        <div className="flex w-96 flex-col items-center px-10 pb-6 pt-2 text-left md:w-2/3">
+          <h3 className="text-xl text-neutral-600 dark:text-neutral-300">
+            Inspired by Daniel Kahneman's <It>"Thinking, Fast and Slow".</It>
+          </h3>
+          <LandingPageIllustration />
+          <StartButton />
+          <h3 className="pb-4 pt-6 text-4xl font-bold">
+            Discover your ideal country based on data
+          </h3>
+          <p className="pb-3 text-left text-lg text-neutral-600 dark:text-neutral-300">
+            <It>
+              “Intuition adds value even in the justly derided selection
+              interview, but only after a disciplined collection of objective
+              info and disciplined scoring of separate traits.”
+            </It>
+          </p>
+        </div>
       </div>
       <div className="pt-10" id="all-data">
         <p className="text-left text-xl font-semibold">
@@ -44,7 +44,7 @@ export default async function Home() {
         <h3 className="py-4 text-4xl font-bold">
           How the scoring system works
         </h3>
-        <p className="text-neutral text-xl">
+        <p className="text-neutral text-xl text-neutral-600 dark:text-neutral-300">
           <It>
             The scoring system is tailored to your preferences, analyzing the
             data points you select to ensure relevance to your needs. Each
