@@ -9,6 +9,7 @@ export const IDS = {
   LIFE_SATISFACTION: "lifeSatisfaction",
   FINANCIAL_SATISFACTION: "financialSatisfaction",
   GREEN_ZONES: "greenZones",
+  RISK_OF_POVERTY: "peopleAtRiskOfPoverty",
 } as const;
 
 export const CHECKBOX_ITEMS = new Map([
@@ -17,6 +18,7 @@ export const CHECKBOX_ITEMS = new Map([
   [IDS.LIFE_SATISFACTION, "Overall life satisfaction"],
   [IDS.FINANCIAL_SATISFACTION, "Financial satisfaction"],
   [IDS.GREEN_ZONES, "Green zones"],
+  [IDS.RISK_OF_POVERTY, "Low number of people at risk of poverty"],
 ]);
 
 export const METRIC_WEIGHTS = new Map([
@@ -25,6 +27,7 @@ export const METRIC_WEIGHTS = new Map([
   [IDS.LIFE_SATISFACTION, 1],
   [IDS.FINANCIAL_SATISFACTION, 1],
   [IDS.GREEN_ZONES, 1],
+  [IDS.RISK_OF_POVERTY, -1],
 ]);
 
 export const METRIC_RANGES = {
@@ -47,6 +50,10 @@ export const METRIC_RANGES = {
   [IDS.GREEN_ZONES]: {
     min: 0,
     max: 10,
+  },
+  [IDS.RISK_OF_POVERTY]: {
+    min: 0,
+    max: 50,
   },
 };
 
@@ -131,6 +138,20 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
       dataSetCode: "ilc_pw01",
       unit: "-",
       id: IDS.GREEN_ZONES,
+    },
+  ],
+  [
+    IDS.RISK_OF_POVERTY,
+    {
+      params: {
+        time: "2022",
+        unit: "PC",
+        sex: "T",
+        age: "TOTAL",
+      },
+      dataSetCode: "ilc_peps01n",
+      unit: "PC_POP",
+      id: IDS.RISK_OF_POVERTY,
     },
   ],
 ]);

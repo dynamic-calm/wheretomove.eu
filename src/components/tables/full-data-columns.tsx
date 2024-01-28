@@ -89,7 +89,6 @@ export const columns: ColumnDef<Country>[] = [
       return <div className="text-right">{amount}</div>;
     },
   },
-
   {
     id: IDS.GREEN_ZONES,
     accessorFn: (row) => row.data.greenZones?.value ?? null,
@@ -105,6 +104,28 @@ export const columns: ColumnDef<Country>[] = [
 
       const amount = parseFloat(value);
       return <div className="text-right">{amount}</div>;
+    },
+  },
+  {
+    id: IDS.RISK_OF_POVERTY,
+    accessorFn: (row) => row.data.peopleAtRiskOfPoverty?.value ?? null,
+    header: ({ column }) => (
+      <HeaderSortable text="People at risk of poverty" column={column} />
+    ),
+
+    cell: ({ row }) => {
+      const value = row.getValue(IDS.RISK_OF_POVERTY) as string;
+      if (!value) {
+        return <div className="text-right">-</div>;
+      }
+
+      const amount = parseFloat(value);
+      const formatted = new Intl.NumberFormat("es-ES", {
+        style: "percent",
+        minimumFractionDigits: 1,
+      }).format(amount / 100);
+
+      return <div className="text-right">{formatted}</div>;
     },
   },
 ];
