@@ -66,7 +66,7 @@ export default async function Home() {
           </It>
         </p>
       </div>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center pb-4 pt-6">
         <p className="text-neutral-600 dark:text-neutral-300">
           Data powered by
         </p>
@@ -76,7 +76,7 @@ export default async function Home() {
             height={150}
             width={150}
             alt="eurostat logo"
-            className="py-6"
+            className=""
           />
         </Link>
       </div>

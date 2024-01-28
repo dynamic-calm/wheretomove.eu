@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 
 export default function Footer() {
   return (
-    <footer className="flex h-10 items-center justify-center py-6">
+    <footer className="flex h-10 items-center justify-center pt-6 pb-10">
       <div className="flex w-96 max-w-2xl items-center justify-center text-xl">
         <Link
           target="_blank"
