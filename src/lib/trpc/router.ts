@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { Ids } from "@/config";
+import { IDS } from "@/config";
 import { publicProcedure, router } from "./init";
 import QUERIES from "./queries";
 
@@ -10,7 +10,7 @@ export const appRouter = router({
 });
 
 async function getData(id: string) {
-  const query = QUERIES.get(id as Ids)!;
+  const query = QUERIES.get(id as IDS)!;
   return await query();
 }
 

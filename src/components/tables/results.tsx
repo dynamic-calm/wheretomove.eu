@@ -43,7 +43,7 @@ export default function Results({
           <p className="text-7xl font-bold">
             <It>{`${scores.at(0)?.country}!`}</It>
           </p>
-          <Button className="mt-6" onClick={() => setShowRanking(!showRanking)}>
+          <Button className="mt-3" onClick={() => setShowRanking(!showRanking)}>
             Show ranking
           </Button>
         </div>

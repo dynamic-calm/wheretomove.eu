@@ -3,23 +3,23 @@ import type { QueryArgs } from "./lib/trpc/queries";
 export const EUROSTAT_HOST =
   "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data";
 
-export const IDS = {
-  SALARY: "salary",
-  UNEMPLOYMENT: "unemployment",
-  LIFE_SATISFACTION: "lifeSatisfaction",
-  FINANCIAL_SATISFACTION: "financialSatisfaction",
-  GREEN_ZONES: "greenZones",
-  RISK_OF_POVERTY: "peopleAtRiskOfPoverty",
-  HOUSING_COSTS_OVERBURDEN_RATE: "housingCostsOverburdenRate",
-  COL: "costOfLiving",
-} as const;
+export enum IDS {
+  SALARY = "salary",
+  UNEMPLOYMENT = "unemployment",
+  LIFE_SATISFACTION = "lifeSatisfaction",
+  FINANCIAL_SATISFACTION = "financialSatisfaction",
+  GREEN_ZONES = "greenZones",
+  RISK_OF_POVERTY = "peopleAtRiskOfPoverty",
+  HOUSING_COSTS_OVERBURDEN_RATE = "housingCostsOverburdenRate",
+  COL = "costOfLiving",
+}
 
 export const CHECKBOX_ITEMS = new Map([
-  [IDS.SALARY, "High median salary"],
+  [IDS.SALARY, "High income"],
   [IDS.UNEMPLOYMENT, "Low unemployment"],
   [IDS.LIFE_SATISFACTION, "Overall life satisfaction"],
   [IDS.FINANCIAL_SATISFACTION, "Financial satisfaction"],
-  [IDS.GREEN_ZONES, "Satisfaction with green zones"],
+  [IDS.GREEN_ZONES, "Quality of green zones"],
   [IDS.RISK_OF_POVERTY, "Low number of people at risk of poverty"],
   [
     IDS.HOUSING_COSTS_OVERBURDEN_RATE,
@@ -74,11 +74,10 @@ export const METRIC_RANGES = {
   },
 };
 
-export type Ids = (typeof IDS)[keyof typeof IDS];
 
 export const IDS_SET = new Set(Object.values(IDS));
 
-export const QUERY_ARGS = new Map<Ids, QueryArgs>([
+export const QUERY_ARGS = new Map<IDS, QueryArgs>([
   [
     IDS.SALARY,
     {

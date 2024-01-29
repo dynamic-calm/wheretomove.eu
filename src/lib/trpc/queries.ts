@@ -1,5 +1,5 @@
 import JSONstat from "jsonstat-toolkit";
-import { COUNTRIES, EUROSTAT_HOST, IDS, QUERY_ARGS, type Ids } from "@/config";
+import { COUNTRIES, EUROSTAT_HOST, QUERY_ARGS, IDS } from "@/config";
 
 export interface Item {
   country: string;
@@ -11,7 +11,7 @@ export interface QueryArgs {
   dataSetCode: string;
   params: Record<string, string>;
   unit: string;
-  id: Ids;
+  id: IDS;
 }
 
 function generateQuery({ dataSetCode, params, unit, id }: QueryArgs) {
@@ -27,7 +27,7 @@ function generateQuery({ dataSetCode, params, unit, id }: QueryArgs) {
       .flatMap((item: unknown[]) => processItem(item, unit))
       .sort((a: Item, b: Item) => b.value - a.value);
 
-    return { [id]: data } as Record<Ids, Item[]>;
+    return { [id]: data } as Record<IDS, Item[]>;
   };
 }
 
@@ -58,7 +58,7 @@ const financialSatisfaction = generateQuery(
 );
 const costOfLiving = generateQuery(QUERY_ARGS.get(IDS.COL)!);
 
-const QUERIES = new Map<Ids, () => Promise<Record<Ids, Item[]>>>([
+const QUERIES = new Map<IDS, () => Promise<Record<IDS, Item[]>>>([
   [IDS.SALARY, salary],
   [IDS.UNEMPLOYMENT, unemployment],
   [IDS.LIFE_SATISFACTION, lifeSatisfaction],
