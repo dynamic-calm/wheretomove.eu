@@ -22,7 +22,7 @@ export default function Results({
   return (
     <>
       {showRanking ? (
-        <>
+        <div className="flex flex-col items-center justify-center">
           <DataTable columns={columns} data={scores} />
           <div className="flex space-x-2">
             <Link href="/select">
@@ -36,7 +36,7 @@ export default function Results({
               </Button>
             </Link>
           </div>
-        </>
+        </div>
       ) : (
         <div className="flex flex-col items-center justify-center">
           <p className="text-xl">{"You should move to... "}</p>

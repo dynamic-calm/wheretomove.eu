@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/form";
 
 const FormSchema = z.object({
-  items: z.array(z.string()).refine((value) => value.length > 0, {
+  items: z.array(z.string()).refine((value) => value.length > 1, {
     message: "You have to select at least one items",
   }),
 });
