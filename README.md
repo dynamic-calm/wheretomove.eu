@@ -2,3 +2,7 @@
 
 Discover your ideal country based on data.
 Built with [Next.js](https://nextjs.org/), [TalwindCSS](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.com/), [tRPC](https://trpc.io/) and [eurostat](https://ec.europa.eu/eurostat) API.
+
+```bash
+  npm i && npm run dev
+```
