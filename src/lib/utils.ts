@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 import { serverClient } from "@/lib/trpc/client";
-import { METRIC_RANGES, METRIC_WEIGHTS, type IDS } from "@/config";
+import { METRIC_RANGES, METRIC_WEIGHTS, type Ids } from "@/config";
 import { type ClassValue, clsx } from "clsx";
 
 export function cn(...inputs: ClassValue[]) {
@@ -13,7 +13,7 @@ export interface Country {
 }
 
 type CountryData = Record<
-  IDS,
+  Ids,
   {
     value: number;
     unit: "EUR" | "PC_ACT";
@@ -30,7 +30,7 @@ export function transformData(allData: AllData): Country[] {
           if (!acc[country]) {
             acc[country] = {} as CountryData;
           }
-          acc[country][dataId as IDS] = { value, unit };
+          acc[country][dataId as Ids] = { value, unit };
         });
       });
       return acc;
@@ -44,7 +44,7 @@ export function transformData(allData: AllData): Country[] {
   }));
 }
 
-export function getScore(allCountryData: Country[], dataIds: IDS[]) {
+export function getScore(allCountryData: Country[], dataIds: Ids[]) {
   const data = allCountryData.flatMap(({ country, data }) => {
     // If any of the data selected by the user is missing in a country, skip it.
     if (dataIds.some((id) => !data[id])) {
@@ -52,9 +52,9 @@ export function getScore(allCountryData: Country[], dataIds: IDS[]) {
     }
 
     const score = Object.entries(data).reduce((sum, [id, { value }]) => {
-      const range = METRIC_RANGES[id as IDS];
+      const range = METRIC_RANGES[id as Ids];
       const normalizedValue =
-        METRIC_WEIGHTS.get(id as IDS)! < 0
+        METRIC_WEIGHTS.get(id as Ids)! < 0
           ? ((range.max - value) / (range.max - range.min)) * 10
           : ((value - range.min) / (range.max - range.min)) * 10;
 

@@ -1,5 +1,5 @@
 import JSONstat from "jsonstat-toolkit";
-import { COUNTRIES, EUROSTAT_HOST, QUERY_ARGS, IDS } from "@/config";
+import { COUNTRIES, EUROSTAT_HOST, QUERY_ARGS, IDS, type Ids } from "@/config";
 
 export interface Item {
   country: string;
@@ -11,7 +11,7 @@ export interface QueryArgs {
   dataSetCode: string;
   params: Record<string, string>;
   unit: string;
-  id: IDS;
+  id: Ids;
 }
 
 function generateQuery({ dataSetCode, params, unit, id }: QueryArgs) {
@@ -27,7 +27,7 @@ function generateQuery({ dataSetCode, params, unit, id }: QueryArgs) {
       .flatMap((item: unknown[]) => processItem(item, unit))
       .sort((a: Item, b: Item) => b.value - a.value);
 
-    return { [id]: data } as Record<IDS, Item[]>;
+    return { [id]: data } as Record<Ids, Item[]>;
   };
 }
 
@@ -45,28 +45,13 @@ function processItem(item: unknown[], unit: string) {
     : [];
 }
 
-const salary = generateQuery(QUERY_ARGS.get(IDS.SALARY)!);
-const lifeSatisfaction = generateQuery(QUERY_ARGS.get(IDS.LIFE_SATISFACTION)!);
-const unemployment = generateQuery(QUERY_ARGS.get(IDS.UNEMPLOYMENT)!);
-const greenZones = generateQuery(QUERY_ARGS.get(IDS.GREEN_ZONES)!);
-const riskOfPoverty = generateQuery(QUERY_ARGS.get(IDS.RISK_OF_POVERTY)!);
-const housingCostsOverburdenRate = generateQuery(
-  QUERY_ARGS.get(IDS.HOUSING_COSTS_OVERBURDEN_RATE)!,
-);
-const financialSatisfaction = generateQuery(
-  QUERY_ARGS.get(IDS.FINANCIAL_SATISFACTION)!,
-);
-const costOfLiving = generateQuery(QUERY_ARGS.get(IDS.COL)!);
+const QUERIES = new Map<Ids, () => Promise<Record<Ids, Item[]>>>();
 
-const QUERIES = new Map<IDS, () => Promise<Record<IDS, Item[]>>>([
-  [IDS.SALARY, salary],
-  [IDS.UNEMPLOYMENT, unemployment],
-  [IDS.LIFE_SATISFACTION, lifeSatisfaction],
-  [IDS.GREEN_ZONES, greenZones],
-  [IDS.FINANCIAL_SATISFACTION, financialSatisfaction],
-  [IDS.RISK_OF_POVERTY, riskOfPoverty],
-  [IDS.HOUSING_COSTS_OVERBURDEN_RATE, housingCostsOverburdenRate],
-  [IDS.COL, costOfLiving],
-]);
+for (const id of Object.values(IDS)) {
+  const queryArgs = QUERY_ARGS.get(id);
+  if (queryArgs) {
+    QUERIES.set(id, generateQuery(queryArgs));
+  }
+}
 
 export default QUERIES;

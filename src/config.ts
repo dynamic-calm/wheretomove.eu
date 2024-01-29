@@ -3,16 +3,19 @@ import type { QueryArgs } from "./lib/trpc/queries";
 export const EUROSTAT_HOST =
   "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data";
 
-export enum IDS {
-  SALARY = "salary",
-  UNEMPLOYMENT = "unemployment",
-  LIFE_SATISFACTION = "lifeSatisfaction",
-  FINANCIAL_SATISFACTION = "financialSatisfaction",
-  GREEN_ZONES = "greenZones",
-  RISK_OF_POVERTY = "peopleAtRiskOfPoverty",
-  HOUSING_COSTS_OVERBURDEN_RATE = "housingCostsOverburdenRate",
-  COL = "costOfLiving",
-}
+export const IDS = {
+  SALARY: "salary",
+  UNEMPLOYMENT: "unemployment",
+  LIFE_SATISFACTION: "lifeSatisfaction",
+  FINANCIAL_SATISFACTION: "financialSatisfaction",
+  GREEN_ZONES: "greenZones",
+  RISK_OF_POVERTY: "peopleAtRiskOfPoverty",
+  HOUSING_COSTS_OVERBURDEN_RATE: "housingCostsOverburdenRate",
+  COL: "costOfLiving",
+  GDP_PER_CAPITA: "gdpPerCapita",
+} as const;
+
+export type Ids = (typeof IDS)[keyof typeof IDS];
 
 export const CHECKBOX_ITEMS = new Map([
   [IDS.SALARY, "High income"],
@@ -26,6 +29,7 @@ export const CHECKBOX_ITEMS = new Map([
     "Housing costs not being more that 40% of income",
   ],
   [IDS.COL, "Low prices"],
+  [IDS.GDP_PER_CAPITA, "High GDP per capita"],
 ]);
 
 export const METRIC_WEIGHTS = new Map([
@@ -37,6 +41,7 @@ export const METRIC_WEIGHTS = new Map([
   [IDS.RISK_OF_POVERTY, -1],
   [IDS.HOUSING_COSTS_OVERBURDEN_RATE, -1],
   [IDS.COL, -1],
+  [IDS.GDP_PER_CAPITA, 1],
 ]);
 
 export const METRIC_RANGES = {
@@ -72,12 +77,15 @@ export const METRIC_RANGES = {
     min: 40,
     max: 175,
   },
+  [IDS.GDP_PER_CAPITA]: {
+    min: 30,
+    max: 260,
+  },
 };
-
 
 export const IDS_SET = new Set(Object.values(IDS));
 
-export const QUERY_ARGS = new Map<IDS, QueryArgs>([
+export const QUERY_ARGS = new Map<Ids, QueryArgs>([
   [
     IDS.SALARY,
     {
@@ -196,6 +204,19 @@ export const QUERY_ARGS = new Map<IDS, QueryArgs>([
       dataSetCode: "tec00120",
       unit: "PPS",
       id: IDS.COL,
+    },
+  ],
+  [
+    IDS.GDP_PER_CAPITA,
+    {
+      params: {
+        time: "2022",
+        na_item: "VI_PPS_EU27_2020_HAB",
+        ppp_cat: "GDP",
+      },
+      dataSetCode: "tec00114",
+      unit: "PPS",
+      id: IDS.GDP_PER_CAPITA,
     },
   ],
 ]);

@@ -177,4 +177,30 @@ export const columns: ColumnDef<Country>[] = [
       );
     },
   },
+  {
+    id: IDS.GDP_PER_CAPITA,
+    accessorFn: (row) => row.data.gdpPerCapita?.value ?? null,
+    header: ({ column }) => (
+      <HeaderSortable text="GDP per capita" column={column} />
+    ),
+
+    cell: ({ row }) => {
+      const value = row.getValue(IDS.GDP_PER_CAPITA) as string;
+      if (!value) {
+        return <div className="text-right">-</div>;
+      }
+
+      const amount = parseFloat(value);
+      const formatted = new Intl.NumberFormat("es-ES", {
+        maximumFractionDigits: 1,
+        minimumFractionDigits: 1,
+      }).format(amount);
+
+      return (
+        <div className="text-right">
+          <p>{formatted} PPs</p>
+        </div>
+      );
+    },
+  },
 ];
