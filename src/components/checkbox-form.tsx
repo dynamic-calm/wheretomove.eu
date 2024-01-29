@@ -19,7 +19,7 @@ import {
 
 const FormSchema = z.object({
   items: z.array(z.string()).refine((value) => value.length > 1, {
-    message: "You have to select at least one items",
+    message: "You have to select at least two items",
   }),
 });
 
