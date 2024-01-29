@@ -13,6 +13,8 @@ export const IDS = {
   HOUSING_COSTS_OVERBURDEN_RATE: "housingCostsOverburdenRate",
   COL: "costOfLiving",
   GDP_PER_CAPITA: "gdpPerCapita",
+  VIOLENCE: "violence",
+  RELATIONSHIPS_SATISFACTION: "relationshipsSatisfaction",
 } as const;
 
 export type Ids = (typeof IDS)[keyof typeof IDS];
@@ -30,6 +32,8 @@ export const CHECKBOX_ITEMS = new Map([
   ],
   [IDS.COL, "Low prices"],
   [IDS.GDP_PER_CAPITA, "High GDP per capita"],
+  [IDS.VIOLENCE, "Low crime, violence or vandalism in the area"],
+  [IDS.RELATIONSHIPS_SATISFACTION, "Great personal relationships"],
 ]);
 
 export const METRIC_WEIGHTS = new Map([
@@ -42,6 +46,8 @@ export const METRIC_WEIGHTS = new Map([
   [IDS.HOUSING_COSTS_OVERBURDEN_RATE, -1],
   [IDS.COL, -1],
   [IDS.GDP_PER_CAPITA, 1],
+  [IDS.VIOLENCE, -1],
+  [IDS.RELATIONSHIPS_SATISFACTION, 1],
 ]);
 
 export const METRIC_RANGES = {
@@ -80,6 +86,14 @@ export const METRIC_RANGES = {
   [IDS.GDP_PER_CAPITA]: {
     min: 30,
     max: 260,
+  },
+  [IDS.VIOLENCE]: {
+    min: 0,
+    max: 20,
+  },
+  [IDS.RELATIONSHIPS_SATISFACTION]: {
+    min: 0,
+    max: 10,
   },
 };
 
@@ -217,6 +231,37 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
       dataSetCode: "tec00114",
       unit: "PPS",
       id: IDS.GDP_PER_CAPITA,
+    },
+  ],
+  [
+    IDS.VIOLENCE,
+    {
+      params: {
+        time: "2020",
+        unit: "PC",
+        hhtyp: "TOTAL",
+        incgrp: "TOTAL",
+      },
+      dataSetCode: "ilc_mddw03",
+      unit: "PC",
+      id: IDS.VIOLENCE,
+    },
+  ],
+  //https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_pw01?format=JSON&time=2018&unit=RTG&indic_wb=RELSAT&isced11=TOTAL&sex=T&age=Y_GE16&lang=en  [
+  [
+    IDS.RELATIONSHIPS_SATISFACTION,
+    {
+      params: {
+        time: "2018",
+        unit: "RTG",
+        indic_wb: "RELSAT",
+        isced11: "TOTAL",
+        sex: "T",
+        age: "Y_GE16",
+      },
+      dataSetCode: "ilc_pw01",
+      unit: "-",
+      id: IDS.RELATIONSHIPS_SATISFACTION,
     },
   ],
 ]);

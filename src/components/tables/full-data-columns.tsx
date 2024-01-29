@@ -203,4 +203,46 @@ export const columns: ColumnDef<Country>[] = [
       );
     },
   },
+  {
+    id: IDS.VIOLENCE,
+    accessorFn: (row) => row.data.violence?.value ?? null,
+    header: ({ column }) => (
+      <HeaderSortable text="Crime, violence or vandalism" column={column} />
+    ),
+
+    cell: ({ row }) => {
+      const value = row.getValue(IDS.VIOLENCE) as string;
+      if (!value) {
+        return <div className="text-right">-</div>;
+      }
+
+      const amount = parseFloat(value);
+      const formatted = new Intl.NumberFormat("es-ES", {
+        style: "percent",
+        minimumFractionDigits: 1,
+      }).format(amount / 100);
+
+      return <div className="text-right">{formatted}</div>;
+    },
+  },
+  {
+    id: IDS.RELATIONSHIPS_SATISFACTION,
+    accessorFn: (row) => row.data.relationshipsSatisfaction?.value ?? null,
+    header: ({ column }) => (
+      <HeaderSortable
+        text="Personal relationships satisfaction"
+        column={column}
+      />
+    ),
+
+    cell: ({ row }) => {
+      const value = row.getValue(IDS.RELATIONSHIPS_SATISFACTION) as string;
+      if (!value) {
+        return <div className="text-right">-</div>;
+      }
+
+      const amount = parseFloat(value);
+      return <div className="text-right">{amount}</div>;
+    },
+  },
 ];
