@@ -15,12 +15,12 @@ export default async function Home() {
     <div className="flex w-auto max-w-[22.5rem] flex-col items-center justify-between pt-10 md:max-w-[40rem]">
       <div className="flex flex-col items-center justify-center text-center">
         <h2 className="text-4xl font-bold">Where should I move?</h2>
-        <div className="flex flex-col items-center justify-center pb-6 pt-2 text-left">
+        <div className="flex flex-col items-center justify-center pb-3 pt-1 text-left">
           <h3 className="text-lg text-neutral-600 dark:text-neutral-300">
             Discover your ideal country based on data.
           </h3>
           <LandingPageIllustration />
-          <div className="flex space-x-8 pt-4">
+          <div className="flex space-x-4 pt-4">
             <StartButton />
             <Link href="/#all-data">
               <Button
@@ -32,10 +32,10 @@ export default async function Home() {
             </Link>
           </div>
           <div className="text-center">
-            <h3 className="pb-4 pt-6 text-xl font-bold">
+            <h3 className="pb-1 pt-1 text-xl font-bold">
               Inspired by Daniel Kahneman's Thinking, Fast and Slow.
             </h3>
-            <p className="pb-3 text-neutral-600 dark:text-neutral-300">
+            <p className="text-neutral-600 dark:text-neutral-300">
               Intuition adds value even in the justly derided selection
               interview, but only after a disciplined collection of objective
               info and disciplined scoring of separate traits.
@@ -44,7 +44,7 @@ export default async function Home() {
         </div>
       </div>
       <div
-        className="w-auto  max-w-[22.5rem] pt-10 md:max-w-screen-md lg:max-w-screen-lg"
+        className="w-auto max-w-[22.5rem] pt-10 md:max-w-screen-md lg:max-w-screen-lg"
         id="all-data"
       >
         <p className="text-xl font-semibold">Explore all data available:</p>
@@ -52,7 +52,7 @@ export default async function Home() {
       </div>
       <StartButton />
       <div className="flex flex-col items-center pt-2 text-center">
-        <h3 className="py-4 text-2xl font-bold">
+        <h3 className="pb-1 text-2xl font-bold">
           How the scoring system works
         </h3>
         <p className="text-neutral text-neutral-600 dark:text-neutral-300">
