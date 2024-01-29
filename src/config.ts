@@ -247,7 +247,6 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
       id: IDS.VIOLENCE,
     },
   ],
-  //https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_pw01?format=JSON&time=2018&unit=RTG&indic_wb=RELSAT&isced11=TOTAL&sex=T&age=Y_GE16&lang=en  [
   [
     IDS.RELATIONSHIPS_SATISFACTION,
     {
