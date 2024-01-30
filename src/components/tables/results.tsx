@@ -6,6 +6,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { columns } from "./results-columns";
+import { COUNTRIES_EMOJI_MAP } from "@/config";
 
 export default function Results({
   scores,
@@ -18,6 +19,7 @@ export default function Results({
 }) {
   const [showRanking, setShowRanking] = useState(false);
 
+  const countryName = scores.at(0)?.country;
   return (
     <>
       {showRanking ? (
@@ -41,7 +43,12 @@ export default function Results({
           <p className="dark:text-neutral- text-xl text-neutral-500 dark:text-neutral-300">
             You should move to...
           </p>
-          <p className="text-6xl font-bold">{`${scores.at(0)?.country}!`}</p>
+          <p className="text-6xl font-bold">
+            {`${scores.at(0)?.country}!`}{" "}
+            <span className="text-5xl">
+              {COUNTRIES_EMOJI_MAP.get(countryName!)}
+            </span>
+          </p>
           <Button
             variant="outline"
             className="mt-3"
