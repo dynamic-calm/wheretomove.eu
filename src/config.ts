@@ -302,7 +302,7 @@ export const COUNTRIES = new Set([
   "Türkiye",
 ]);
 
-export const COUNTRIES_EMOJI_MAP = new Map([
+export const COUNTRIES_EMOJIS = new Map([
   ["Belgium", "🇧🇪"],
   ["Bulgaria", "🇧🇬"],
   ["Czechia", "🇨🇿"],

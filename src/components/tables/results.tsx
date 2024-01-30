@@ -46,7 +46,7 @@ export default function Results({
           <p className="text-6xl font-bold">
             {`${scores.at(0)?.country}!`}{" "}
             <span className="text-5xl">
-              {COUNTRIES_EMOJI_MAP.get(countryName!)}
+              {COUNTRIES_EMOJIS.get(countryName!)}
             </span>
           </p>
           <Button
