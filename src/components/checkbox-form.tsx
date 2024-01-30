@@ -92,7 +92,7 @@ export function CheckBoxForm({
                             }}
                           />
                         </FormControl>
-                        <FormLabel className="text-sm font-normal">
+                        <FormLabel className="font-normal py-1">
                           {label}
                         </FormLabel>
                       </FormItem>
