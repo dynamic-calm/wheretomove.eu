@@ -1,8 +1,8 @@
 import "./globals.css";
 import { Inter as FontSans } from "next/font/google";
-import type { Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import type { Metadata } from "next";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={cn(
-          "bg-background flex min-h-screen flex-col overflow-x-hidden font-sans antialiased",
+          "bg-background flex min-h-screen flex-col overflow-x-hidden font-sans leading-tight tracking-tighter antialiased",
           fontSans.variable,
         )}
       >

@@ -8,13 +8,15 @@ type Result = ReturnType<typeof getScore>[number];
 
 export const columns: ColumnDef<Result>[] = [
   {
+    id: "position",
     accessorFn: (row) => row.position,
-    header: "Position",
+    header: () => <p className="text-xs">Position</p>,
     enableHiding: false,
   },
   {
+    id: "country",
     accessorKey: "country",
-    header: "Country",
+    header: () => <p className="text-xs">Country</p>,
     enableHiding: false,
   },
   {

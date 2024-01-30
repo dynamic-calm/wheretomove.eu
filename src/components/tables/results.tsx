@@ -6,7 +6,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { columns } from "./results-columns";
-import { COUNTRIES_EMOJI_MAP } from "@/config";
+import { COUNTRIES_EMOJIS } from "@/config";
 
 export default function Results({
   scores,
@@ -27,24 +27,24 @@ export default function Results({
           <DataTable columns={columns} data={scores} />
           <div className="flex space-x-2">
             <Link href="/select">
-              <Button variant="secondary" className="mb-14">
+              <Button variant="outline" className="mb-14">
                 Try again <ArrowLeftIcon className="ml-2" />
               </Button>
             </Link>
             <Link href="/#all-data">
-              <Button variant="link" className="mb-14">
+              <Button variant="secondary" className="mb-14">
                 Check all data
               </Button>
             </Link>
           </div>
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center gap-2 leading-tight tracking-tighter ">
+        <div className="flex flex-col items-center justify-center gap-2">
           <p className="dark:text-neutral- text-xl text-neutral-500 dark:text-neutral-300">
             You should move to...
           </p>
           <p className="text-6xl font-bold">
-            {`${scores.at(0)?.country}!`}{" "}
+            {`${scores.at(0)?.country}! `}
             <span className="text-5xl">
               {COUNTRIES_EMOJIS.get(countryName!)}
             </span>

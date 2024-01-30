@@ -8,7 +8,7 @@ import type { Country } from "@/lib/utils";
 export const columns: ColumnDef<Country>[] = [
   {
     accessorKey: "country",
-    header: "Country",
+    header: () => <p className="text-xs">Country</p>,
     enableHiding: false,
   },
   {

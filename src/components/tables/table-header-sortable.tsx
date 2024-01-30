@@ -1,6 +1,6 @@
 import { Column } from "@tanstack/react-table";
 import { Button } from "../ui/button";
-import { ArrowUpDown } from "lucide-react";
+import { CaretSortIcon } from "@radix-ui/react-icons";
 import type { Country } from "@/lib/utils";
 
 export default function HeaderSortable({
@@ -24,10 +24,10 @@ export default function HeaderSortable({
       <Button
         variant="ghost"
         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        className="font-normal"
+        className="pl-3 text-xs font-normal"
       >
         {text}
-        <ArrowUpDown className="ml-1 h-3 w-3" />
+        <CaretSortIcon />
       </Button>
     </div>
   );

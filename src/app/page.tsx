@@ -11,13 +11,13 @@ export default async function Home() {
 
   return (
     <div className="flex w-auto max-w-[22.5rem] flex-col items-center justify-between pt-10 md:max-w-[40rem]">
-      <div className="flex flex-col items-center justify-center gap-2 leading-tight tracking-tighter">
-        <h1 className="text-center text-3xl font-bold md:text-6xl">
+      <div className="flex flex-col items-center justify-center gap-2">
+        <h1 className="scroll-m-20 text-center text-4xl font-extrabold  lg:text-5xl">
           Where should I move?
         </h1>
-        <span className="max-w-[750px]text-lg text-neutral-500 sm:text-xl">
+        <p className="text-xl text-neutral-500">
           Discover your ideal country based on data.
-        </span>
+        </p>
         <Link href="/select" className="py-4">
           <Button>Get Started</Button>
         </Link>
@@ -28,8 +28,8 @@ export default async function Home() {
       >
         <DataTable columns={columns} data={data} />
       </div>
-      <div className="flex items-center justify-center pb-4 pt-6">
-        <p className="text-neutral-500 dark:text-neutral-300">
+      <div className="flex items-center justify-center">
+        <p className="text-neutral-500">
           Data powered by
         </p>
         <Link target="_blank" href="https://ec.europa.eu/eurostat">
