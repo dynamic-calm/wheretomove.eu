@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Inter as FontSans } from "next/font/google";
 import type { Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
@@ -8,8 +8,12 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { cn } from "@/lib/utils";
 
-const inter = Inter({ subsets: ["latin"] });
+export const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: "wheretomove.eu",
@@ -24,14 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${inter.className} flex min-h-screen flex-col overflow-x-hidden antialiased`}
+        className={cn(
+          "bg-background flex min-h-screen flex-col overflow-x-hidden font-sans antialiased",
+          fontSans.variable,
+        )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex h-screen flex-col items-center justify-between">
             <Header />
             {children}

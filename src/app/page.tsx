@@ -11,11 +11,11 @@ export default async function Home() {
 
   return (
     <div className="flex w-auto max-w-[22.5rem] flex-col items-center justify-between pt-10 md:max-w-[40rem]">
-      <div className="flex flex-col items-center justify-center gap-2 text-center leading-tight tracking-tighter">
+      <div className="flex flex-col items-center justify-center gap-2 leading-tight tracking-tighter">
         <h1 className="text-center text-3xl font-bold md:text-6xl">
           Where should I move?
         </h1>
-        <span className="max-w-[750px] text-center text-lg text-neutral-500 sm:text-xl">
+        <span className="max-w-[750px]text-lg text-neutral-500 sm:text-xl">
           Discover your ideal country based on data.
         </span>
         <Link href="/select" className="py-4">
