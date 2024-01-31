@@ -76,7 +76,7 @@ export function CheckBoxForm({
                     return (
                       <FormItem
                         key={id}
-                        className="flex flex-row items-center space-x-3 space-y-1"
+                        className="flex flex-row items-center space-x-3 space-y-0"
                       >
                         <FormControl>
                           <Checkbox
