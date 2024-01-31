@@ -5,6 +5,7 @@ import getAllData from "@/lib/trpc/all";
 import { DataTable } from "@/components/tables/data-table";
 import { columns } from "../components/tables/full-data-columns";
 import { Button } from "@/components/ui/button";
+import FlagCarousel from "@/components/flag-carousel";
 
 export default async function Home() {
   const data = await getAllData();
@@ -18,6 +19,8 @@ export default async function Home() {
         <p className="text-xl text-neutral-500">
           Discover your ideal country based on data.
         </p>
+
+        <FlagCarousel />
         <Link href="/select" className="py-4">
           <Button>Get Started</Button>
         </Link>
@@ -29,9 +32,7 @@ export default async function Home() {
         <DataTable columns={columns} data={data} />
       </div>
       <div className="flex items-center justify-center">
-        <p className="text-neutral-500">
-          Data powered by
-        </p>
+        <p className="text-neutral-500">Data powered by</p>
         <Link target="_blank" href="https://ec.europa.eu/eurostat">
           <Image
             src={eurostat}
