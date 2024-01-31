@@ -1,9 +1,15 @@
 "use client";
 
 import HeaderSortable from "@/components/tables/table-header-sortable";
-import { IDS } from "@/config";
+import { IDS, Ids } from "@/config";
 import type { ColumnDef } from "@tanstack/react-table";
 import type { Country } from "@/lib/utils";
+
+import { QUERY_ARGS } from "@/config";
+
+function getYear(column: ColumnDef<Country>) {
+  return Number(QUERY_ARGS.get(column.id as Ids)?.params?.time);
+}
 
 export const columns: ColumnDef<Country>[] = [
   {
@@ -15,7 +21,11 @@ export const columns: ColumnDef<Country>[] = [
     id: IDS.UNEMPLOYMENT,
     accessorFn: (row) => row.data.unemployment?.value ?? null,
     header: ({ column }) => (
-      <HeaderSortable text="Unemployment rate" column={column} />
+      <HeaderSortable
+        text="Unemployment rate"
+        column={column}
+        year={getYear(column)}
+      />
     ),
 
     cell: ({ row }) => {
@@ -37,7 +47,11 @@ export const columns: ColumnDef<Country>[] = [
     id: IDS.SALARY,
     accessorFn: (row) => row.data.salary?.value ?? null,
     header: ({ column }) => (
-      <HeaderSortable text="Median salary" column={column} />
+      <HeaderSortable
+        text="Median salary"
+        column={column}
+        year={getYear(column)}
+      />
     ),
 
     cell: ({ row }) => {
@@ -60,7 +74,11 @@ export const columns: ColumnDef<Country>[] = [
     id: IDS.LIFE_SATISFACTION,
     accessorFn: (row) => row.data.lifeSatisfaction?.value ?? null,
     header: ({ column }) => (
-      <HeaderSortable text="Overall life satisfaction" column={column} />
+      <HeaderSortable
+        text="Overall life satisfaction"
+        column={column}
+        year={getYear(column)}
+      />
     ),
 
     cell: ({ row }) => {
@@ -77,7 +95,11 @@ export const columns: ColumnDef<Country>[] = [
     id: IDS.FINANCIAL_SATISFACTION,
     accessorFn: (row) => row.data.financialSatisfaction?.value ?? null,
     header: ({ column }) => (
-      <HeaderSortable text="Financial satisfaction" column={column} />
+      <HeaderSortable
+        text="Financial satisfaction"
+        column={column}
+        year={getYear(column)}
+      />
     ),
 
     cell: ({ row }) => {
@@ -94,7 +116,11 @@ export const columns: ColumnDef<Country>[] = [
     id: IDS.GREEN_ZONES,
     accessorFn: (row) => row.data.greenZones?.value ?? null,
     header: ({ column }) => (
-      <HeaderSortable text="Green zones" column={column} />
+      <HeaderSortable
+        text="Green zones"
+        column={column}
+        year={getYear(column)}
+      />
     ),
 
     cell: ({ row }) => {
@@ -111,7 +137,11 @@ export const columns: ColumnDef<Country>[] = [
     id: IDS.RISK_OF_POVERTY,
     accessorFn: (row) => row.data.peopleAtRiskOfPoverty?.value ?? null,
     header: ({ column }) => (
-      <HeaderSortable text="People at risk of poverty" column={column} />
+      <HeaderSortable
+        text="People at risk of poverty"
+        column={column}
+        year={getYear(column)}
+      />
     ),
 
     cell: ({ row }) => {
@@ -133,7 +163,11 @@ export const columns: ColumnDef<Country>[] = [
     id: IDS.HOUSING_COSTS_OVERBURDEN_RATE,
     accessorFn: (row) => row.data.housingCostsOverburdenRate?.value ?? null,
     header: ({ column }) => (
-      <HeaderSortable text="Housing costs overburden rate" column={column} />
+      <HeaderSortable
+        text="Housing costs overburden rate"
+        column={column}
+        year={getYear(column)}
+      />
     ),
 
     cell: ({ row }) => {
@@ -155,7 +189,11 @@ export const columns: ColumnDef<Country>[] = [
     id: IDS.COL,
     accessorFn: (row) => row.data.costOfLiving?.value ?? null,
     header: ({ column }) => (
-      <HeaderSortable text="Cost of living" column={column} />
+      <HeaderSortable
+        text="Cost of living"
+        column={column}
+        year={getYear(column)}
+      />
     ),
 
     cell: ({ row }) => {
@@ -181,7 +219,11 @@ export const columns: ColumnDef<Country>[] = [
     id: IDS.GDP_PER_CAPITA,
     accessorFn: (row) => row.data.gdpPerCapita?.value ?? null,
     header: ({ column }) => (
-      <HeaderSortable text="GDP per capita" column={column} />
+      <HeaderSortable
+        text="GDP per capita"
+        column={column}
+        year={getYear(column)}
+      />
     ),
 
     cell: ({ row }) => {
@@ -207,7 +249,11 @@ export const columns: ColumnDef<Country>[] = [
     id: IDS.VIOLENCE,
     accessorFn: (row) => row.data.violence?.value ?? null,
     header: ({ column }) => (
-      <HeaderSortable text="Crime, violence or vandalism" column={column} />
+      <HeaderSortable
+        text="Crime, violence or vandalism"
+        column={column}
+        year={getYear(column)}
+      />
     ),
 
     cell: ({ row }) => {
@@ -232,6 +278,7 @@ export const columns: ColumnDef<Country>[] = [
       <HeaderSortable
         text="Personal relationships satisfaction"
         column={column}
+        year={getYear(column)}
       />
     ),
 

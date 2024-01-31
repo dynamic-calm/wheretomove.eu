@@ -57,6 +57,12 @@ export function DataTable<TData, TValue>({
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
+    initialState: {
+      pagination: {
+        pageSize: 15,
+        pageIndex: 0,
+      }
+    },
     state: {
       sorting,
       columnFilters,
@@ -107,7 +113,7 @@ export function DataTable<TData, TValue>({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="h-[25rem]">
+      <div className="h-[37rem]">
         <div className="rounded-lg border dark:border-neutral-700">
           <Table>
             <TableHeader>
