@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { IDS_SET, type Ids } from "@/config";
+import { CONFIG, type Ids } from "@/config";
 import { serverClient } from "@/lib/trpc/client";
 import { getScore, transformData } from "@/lib/utils";
 import Results from "@/components/tables/results";
@@ -7,7 +7,9 @@ import Results from "@/components/tables/results";
 const ParamsSchema = z.object({
   dataIds: z
     .array(z.string())
-    .refine((values) => values.every((value) => IDS_SET.has(value as Ids))),
+    .refine((values) =>
+      values.every((value) => CONFIG[value as Ids] !== undefined),
+    ),
 });
 
 export default async function ResultPage({

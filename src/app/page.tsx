@@ -26,7 +26,7 @@ export default async function Home() {
         </Link>
       </div>
       <div
-        className="w-auto max-w-96 md:max-w-screen-md lg:max-w-screen-lg"
+        className="w-auto max-w-80 md:max-w-screen-md lg:max-w-screen-lg"
         id="all-data"
       >
         <DataTable columns={columns} data={data} />

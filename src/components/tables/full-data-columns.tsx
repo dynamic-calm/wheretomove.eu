@@ -5,10 +5,10 @@ import { IDS, Ids } from "@/config";
 import type { ColumnDef } from "@tanstack/react-table";
 import type { Country } from "@/lib/utils";
 
-import { QUERY_ARGS } from "@/config";
+import { CONFIG } from "@/config";
 
 function getYear(column: ColumnDef<Country>) {
-  return Number(QUERY_ARGS.get(column.id as Ids)?.params?.time);
+  return Number(CONFIG[column.id as Ids].euroStatArgs.params.time);
 }
 
 export const columns: ColumnDef<Country>[] = [

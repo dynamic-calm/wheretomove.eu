@@ -1,6 +1,6 @@
 "use client";
 import Autoplay from "embla-carousel-autoplay";
-import { COUNTRIES_EMOJIS } from "@/config";
+import { COUNTRIES } from "@/config";
 import {
   Carousel,
   CarouselContent,
@@ -9,7 +9,7 @@ import {
 
 export default function FlagCarousel() {
   return (
-    <div className="w-96">
+    <div className="w-80 md:w-96">
       <Carousel
         opts={{
           loop: true,
@@ -21,7 +21,7 @@ export default function FlagCarousel() {
         ]}
       >
         <CarouselContent>
-          {[...COUNTRIES_EMOJIS].map(([country, emoji]) => (
+          {[...COUNTRIES].map(([country, emoji]) => (
             <CarouselItem key={country} className="basis-1/5 text-5xl">
               {emoji}
             </CarouselItem>

@@ -2,7 +2,7 @@
 
 import { CheckBoxForm } from "@/components/checkbox-form";
 import { Skeleton } from "@/components/ui/skeleton";
-import { CHECKBOX_ITEMS } from "@/config";
+import { CONFIG } from "@/config";
 import { Suspense } from "react";
 
 export default function Start() {
@@ -16,13 +16,14 @@ export default function Start() {
     </div>
   );
 
+
   return (
     <>
       <Suspense fallback={fallBack}>
         <CheckBoxForm
           title="What matters"
           description="Select what you value the most in a country."
-          items={CHECKBOX_ITEMS}
+          items={CONFIG}
         />
       </Suspense>
     </>

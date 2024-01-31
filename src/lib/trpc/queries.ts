@@ -1,5 +1,5 @@
 import JSONstat from "jsonstat-toolkit";
-import { COUNTRIES, EUROSTAT_HOST, QUERY_ARGS, IDS, type Ids } from "@/config";
+import { CONFIG, COUNTRIES, EUROSTAT_HOST, IDS, type Ids } from "@/config";
 
 export interface Item {
   country: string;
@@ -48,9 +48,9 @@ function processItem(item: unknown[], unit: string) {
 const QUERIES = new Map<Ids, () => Promise<Record<Ids, Item[]>>>();
 
 for (const id of Object.values(IDS)) {
-  const queryArgs = QUERY_ARGS.get(id);
-  if (queryArgs) {
-    QUERIES.set(id, generateQuery(queryArgs));
+  const { euroStatArgs } = CONFIG[id];
+  if (euroStatArgs) {
+    QUERIES.set(id, generateQuery({ ...euroStatArgs, id }));
   }
 }
 

@@ -1,5 +1,3 @@
-import type { QueryArgs } from "./lib/trpc/queries";
-
 export const EUROSTAT_HOST =
   "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data";
 
@@ -18,91 +16,30 @@ export const IDS = {
 } as const;
 
 export type Ids = (typeof IDS)[keyof typeof IDS];
+export interface Config {
+  checkBoxDescription: string;
+  weight: 1 | -1;
+  euroStatArgs: EuroStatArgs;
+  range: {
+    min: number;
+    max: number;
+  };
+}
 
-export const CHECKBOX_ITEMS = new Map([
-  [IDS.SALARY, "High income"],
-  [IDS.UNEMPLOYMENT, "Low unemployment"],
-  [IDS.LIFE_SATISFACTION, "Overall life satisfaction"],
-  [IDS.FINANCIAL_SATISFACTION, "Financial satisfaction"],
-  [IDS.GREEN_ZONES, "Quality of green zones"],
-  [IDS.RISK_OF_POVERTY, "Low number of people at risk of poverty"],
-  [
-    IDS.HOUSING_COSTS_OVERBURDEN_RATE,
-    "Housing costs not being more that 40% of income",
-  ],
-  [IDS.COL, "Low prices"],
-  [IDS.GDP_PER_CAPITA, "High GDP per capita"],
-  [IDS.VIOLENCE, "Low crime, violence or vandalism in the area"],
-  [IDS.RELATIONSHIPS_SATISFACTION, "Great personal relationships"],
-]);
-
-export const METRIC_WEIGHTS = new Map([
-  [IDS.SALARY, 1],
-  [IDS.UNEMPLOYMENT, -1],
-  [IDS.LIFE_SATISFACTION, 1],
-  [IDS.FINANCIAL_SATISFACTION, 1],
-  [IDS.GREEN_ZONES, 1],
-  [IDS.RISK_OF_POVERTY, -1],
-  [IDS.HOUSING_COSTS_OVERBURDEN_RATE, -1],
-  [IDS.COL, -1],
-  [IDS.GDP_PER_CAPITA, 1],
-  [IDS.VIOLENCE, -1],
-  [IDS.RELATIONSHIPS_SATISFACTION, 1],
-]);
-
-export const METRIC_RANGES = {
+export interface EuroStatArgs {
+  dataSetCode: string;
+  params: Record<string, string>;
+  unit: string;
+}
+export const CONFIG: Record<Ids, Config> = {
   [IDS.SALARY]: {
-    min: 3000,
-    max: 50000,
-  },
-  [IDS.UNEMPLOYMENT]: {
-    min: 2,
-    max: 13,
-  },
-  [IDS.LIFE_SATISFACTION]: {
-    min: 0,
-    max: 10,
-  },
-  [IDS.FINANCIAL_SATISFACTION]: {
-    min: 0,
-    max: 10,
-  },
-  [IDS.GREEN_ZONES]: {
-    min: 0,
-    max: 10,
-  },
-  [IDS.RISK_OF_POVERTY]: {
-    min: 0,
-    max: 50,
-  },
-  [IDS.HOUSING_COSTS_OVERBURDEN_RATE]: {
-    min: 2,
-    max: 27,
-  },
-  [IDS.COL]: {
-    min: 40,
-    max: 175,
-  },
-  [IDS.GDP_PER_CAPITA]: {
-    min: 30,
-    max: 260,
-  },
-  [IDS.VIOLENCE]: {
-    min: 0,
-    max: 20,
-  },
-  [IDS.RELATIONSHIPS_SATISFACTION]: {
-    min: 0,
-    max: 10,
-  },
-};
-
-export const IDS_SET = new Set(Object.values(IDS));
-
-export const QUERY_ARGS = new Map<Ids, QueryArgs>([
-  [
-    IDS.SALARY,
-    {
+    checkBoxDescription: "High income",
+    weight: 1,
+    range: {
+      min: 3000,
+      max: 50000,
+    },
+    euroStatArgs: {
       params: {
         age: "Y18-64",
         unit: "EUR",
@@ -112,12 +49,16 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
       },
       dataSetCode: "ilc_di03",
       unit: "EUR",
-      id: IDS.SALARY,
     },
-  ],
-  [
-    IDS.LIFE_SATISFACTION,
-    {
+  },
+  [IDS.LIFE_SATISFACTION]: {
+    checkBoxDescription: "Overall life satisfaction",
+    weight: 1,
+    range: {
+      min: 0,
+      max: 10,
+    },
+    euroStatArgs: {
       params: {
         time: "2022",
         unit: "RTG",
@@ -128,12 +69,16 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
       },
       dataSetCode: "ilc_pw01",
       unit: "-",
-      id: IDS.LIFE_SATISFACTION,
     },
-  ],
-  [
-    IDS.UNEMPLOYMENT,
-    {
+  },
+  [IDS.UNEMPLOYMENT]: {
+    checkBoxDescription: "Low unemployment",
+    weight: -1,
+    range: {
+      min: 2,
+      max: 13,
+    },
+    euroStatArgs: {
       params: {
         freq: "A",
         age: "Y15-74",
@@ -143,12 +88,16 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
       },
       dataSetCode: "tesem120",
       unit: "PC_ACT",
-      id: IDS.UNEMPLOYMENT,
     },
-  ],
-  [
-    IDS.FINANCIAL_SATISFACTION,
-    {
+  },
+  [IDS.FINANCIAL_SATISFACTION]: {
+    checkBoxDescription: "Financial satisfaction",
+    weight: 1,
+    range: {
+      min: 0,
+      max: 10,
+    },
+    euroStatArgs: {
       params: {
         time: "2018",
         unit: "RTG",
@@ -159,12 +108,16 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
       },
       dataSetCode: "ilc_pw01",
       unit: "-",
-      id: IDS.FINANCIAL_SATISFACTION,
     },
-  ],
-  [
-    IDS.GREEN_ZONES,
-    {
+  },
+  [IDS.GREEN_ZONES]: {
+    range: {
+      min: 0,
+      max: 10,
+    },
+    checkBoxDescription: "Quality of green zones",
+    weight: 1,
+    euroStatArgs: {
       params: {
         time: "2013",
         unit: "RTG",
@@ -175,12 +128,16 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
       },
       dataSetCode: "ilc_pw01",
       unit: "-",
-      id: IDS.GREEN_ZONES,
     },
-  ],
-  [
-    IDS.RISK_OF_POVERTY,
-    {
+  },
+  [IDS.RISK_OF_POVERTY]: {
+    checkBoxDescription: "Low number of people at risk of poverty",
+    weight: -1,
+    range: {
+      min: 0,
+      max: 50,
+    },
+    euroStatArgs: {
       params: {
         time: "2022",
         unit: "PC",
@@ -189,12 +146,16 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
       },
       dataSetCode: "ilc_peps01n",
       unit: "PC_POP",
-      id: IDS.RISK_OF_POVERTY,
     },
-  ],
-  [
-    IDS.HOUSING_COSTS_OVERBURDEN_RATE,
-    {
+  },
+  [IDS.HOUSING_COSTS_OVERBURDEN_RATE]: {
+    checkBoxDescription: "Housing costs not being more that 40% of income",
+    weight: -1,
+    range: {
+      min: 2,
+      max: 27,
+    },
+    euroStatArgs: {
       params: {
         time: "2022",
         unit: "PC",
@@ -204,12 +165,16 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
       },
       dataSetCode: "tespm140",
       unit: "PC",
-      id: IDS.HOUSING_COSTS_OVERBURDEN_RATE,
     },
-  ],
-  [
-    IDS.COL,
-    {
+  },
+  [IDS.COL]: {
+    checkBoxDescription: "Low prices",
+    weight: -1,
+    range: {
+      min: 40,
+      max: 175,
+    },
+    euroStatArgs: {
       params: {
         time: "2022",
         na_item: "PLI_EU27_2020",
@@ -217,12 +182,16 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
       },
       dataSetCode: "tec00120",
       unit: "PPS",
-      id: IDS.COL,
     },
-  ],
-  [
-    IDS.GDP_PER_CAPITA,
-    {
+  },
+  [IDS.GDP_PER_CAPITA]: {
+    checkBoxDescription: "High GDP per capita",
+    weight: 1,
+    range: {
+      min: 30,
+      max: 260,
+    },
+    euroStatArgs: {
       params: {
         time: "2022",
         na_item: "VI_PPS_EU27_2020_HAB",
@@ -230,12 +199,13 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
       },
       dataSetCode: "tec00114",
       unit: "PPS",
-      id: IDS.GDP_PER_CAPITA,
     },
-  ],
-  [
-    IDS.VIOLENCE,
-    {
+  },
+  [IDS.VIOLENCE]: {
+    checkBoxDescription: "Low crime, violence or vandalism in the area",
+    weight: -1,
+    range: { min: 0, max: 20 },
+    euroStatArgs: {
       params: {
         time: "2020",
         unit: "PC",
@@ -244,12 +214,16 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
       },
       dataSetCode: "ilc_mddw03",
       unit: "PC",
-      id: IDS.VIOLENCE,
     },
-  ],
-  [
-    IDS.RELATIONSHIPS_SATISFACTION,
-    {
+  },
+  [IDS.RELATIONSHIPS_SATISFACTION]: {
+    checkBoxDescription: "Great personal relationships",
+    weight: 1,
+    range: {
+      min: 0,
+      max: 10,
+    },
+    euroStatArgs: {
       params: {
         time: "2018",
         unit: "RTG",
@@ -260,49 +234,11 @@ export const QUERY_ARGS = new Map<Ids, QueryArgs>([
       },
       dataSetCode: "ilc_pw01",
       unit: "-",
-      id: IDS.RELATIONSHIPS_SATISFACTION,
     },
-  ],
-]);
+  },
+};
 
-export const COUNTRIES = new Set([
-  "Belgium",
-  "Bulgaria",
-  "Czechia",
-  "Denmark",
-  "Germany",
-  "Estonia",
-  "Ireland",
-  "Greece",
-  "Spain",
-  "France",
-  "Croatia",
-  "Italy",
-  "Cyprus",
-  "Latvia",
-  "Lithuania",
-  "Luxembourg",
-  "Hungary",
-  "Malta",
-  "Netherlands",
-  "Austria",
-  "Poland",
-  "Portugal",
-  "Romania",
-  "Slovenia",
-  "Slovakia",
-  "Finland",
-  "Sweden",
-  "Iceland",
-  "Norway",
-  "Switzerland",
-  "Montenegro",
-  "Albania",
-  "Serbia",
-  "Türkiye",
-]);
-
-export const COUNTRIES_EMOJIS = new Map([
+export const COUNTRIES = new Map([
   ["Belgium", "🇧🇪"],
   ["Bulgaria", "🇧🇬"],
   ["Czechia", "🇨🇿"],

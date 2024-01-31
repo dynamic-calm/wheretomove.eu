@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
 
-import { IDS } from "@/config";
+import { IDS, type Ids, type Config } from "@/config";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -30,7 +30,7 @@ export function CheckBoxForm({
 }: {
   title: string;
   description: string;
-  items: Map<string, string>;
+  items: Record<Ids, Config>;
 }) {
   const router = useRouter();
 
@@ -45,8 +45,10 @@ export function CheckBoxForm({
     toast({
       title: "You submitted the following values:",
       description: (
-        <pre className="mt-2 w-[340px] rounded-md dark:bg-neutral-950 p-4">
-          <code className="dark:text-white">{JSON.stringify(items, null, 2)}</code>
+        <pre className="mt-2 w-[340px] rounded-md p-4 dark:bg-neutral-950">
+          <code className="dark:text-white">
+            {JSON.stringify(items, null, 2)}
+          </code>
         </pre>
       ),
     });
@@ -65,9 +67,11 @@ export function CheckBoxForm({
             <FormItem>
               <div className="mb-4">
                 <FormLabel className="text-2xl">{title}</FormLabel>
-                <FormDescription className="text-lg">{description}</FormDescription>
+                <FormDescription className="text-lg">
+                  {description}
+                </FormDescription>
               </div>
-              {[...items.entries()].map(([id, label]) => (
+              {Object.entries(items).map(([id, { checkBoxDescription }]) => (
                 <FormField
                   key={id}
                   control={form.control}
@@ -93,7 +97,7 @@ export function CheckBoxForm({
                           />
                         </FormControl>
                         <FormLabel className="text-base">
-                          {label}
+                          {checkBoxDescription}
                         </FormLabel>
                       </FormItem>
                     );

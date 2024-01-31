@@ -6,7 +6,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { columns } from "./results-columns";
-import { COUNTRIES_EMOJIS } from "@/config";
+import { COUNTRIES } from "@/config";
 
 export default function Results({
   scores,
@@ -46,7 +46,7 @@ export default function Results({
           <p className="text-6xl font-bold">
             {`${scores.at(0)?.country}! `}
             <span className="text-5xl">
-              {COUNTRIES_EMOJIS.get(countryName!)}
+              {COUNTRIES.get(countryName!)}
             </span>
           </p>
           <Button
