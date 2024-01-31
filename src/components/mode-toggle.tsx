@@ -15,6 +15,7 @@ export default function ModeToggle() {
   const { setTheme } = useTheme();
 
   return (
+    <div className="dark:bg-neutral-950">
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon">
@@ -35,5 +36,6 @@ export default function ModeToggle() {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
+    </div>
   );
 }

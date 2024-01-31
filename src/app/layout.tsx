@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={cn(
-          "bg-background flex min-h-screen flex-col overflow-x-hidden font-sans leading-tight tracking-tighter antialiased",
+          "bg-neutral-950 flex min-h-screen flex-col overflow-x-hidden font-sans leading-tight tracking-tighter antialiased",
           fontSans.variable,
         )}
       >
