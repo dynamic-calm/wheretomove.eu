@@ -13,7 +13,7 @@ export default function Footer() {
           <Button
             variant="link"
             size="sm"
-            className="text-sm leading-tight tracking-tighter text-neutral-800"
+            className="text-sm leading-tight tracking-tighter text-neutral-500 dark:text-neutral-400"
           >
             <FaGithub className="text-x dar" />
             <p className="pl-2 ">By Mateo Presa Castro</p>

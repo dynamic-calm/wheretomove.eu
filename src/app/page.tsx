@@ -16,7 +16,7 @@ export default async function Home() {
         <h1 className="scroll-m-20 text-center text-4xl font-extrabold  lg:text-5xl">
           Where should I move?
         </h1>
-        <p className="text-xl text-neutral-500">
+        <p className="text-xl text-neutral-500 dark:text-neutral-400">
           Discover your ideal country based on data.
         </p>
 
