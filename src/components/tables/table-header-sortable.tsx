@@ -10,7 +10,7 @@ export default function HeaderSortable({
   column,
 }: {
   text: string;
-  year: number;
+  year?: number;
   column:
     | Column<Country, unknown>
     | Column<
