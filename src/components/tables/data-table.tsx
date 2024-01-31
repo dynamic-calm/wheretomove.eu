@@ -104,7 +104,7 @@ export function DataTable<TData, TValue>({
                       index === 0
                         ? char.toUpperCase()
                         : char === char.toUpperCase()
-                          ? [" ", char]
+                          ? [" ", char.toLowerCase()]
                           : char,
                     )}
                   </DropdownMenuCheckboxItem>
