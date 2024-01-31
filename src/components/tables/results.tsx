@@ -25,7 +25,7 @@ export default function Results({
       {showRanking ? (
         <div className="flex flex-col items-center justify-center">
           <DataTable columns={columns} data={scores} />
-          <div className="flex space-x-2">
+          <div className="flex space-x-4 pt-6">
             <Link href="/select">
               <Button className="mb-14">
                 Try again <ArrowLeftIcon className="ml-2" />
