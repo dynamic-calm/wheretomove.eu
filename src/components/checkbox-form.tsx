@@ -64,8 +64,8 @@ export function CheckBoxForm({
           render={() => (
             <FormItem>
               <div className="mb-4">
-                <FormLabel className="text-base">{title}</FormLabel>
-                <FormDescription>{description}</FormDescription>
+                <FormLabel className="text-2xl">{title}</FormLabel>
+                <FormDescription className="text-lg">{description}</FormDescription>
               </div>
               {[...items.entries()].map(([id, label]) => (
                 <FormField
@@ -76,7 +76,7 @@ export function CheckBoxForm({
                     return (
                       <FormItem
                         key={id}
-                        className="flex flex-row items-start space-x-3 space-y-0"
+                        className="flex flex-row items-center space-x-3 space-y-1"
                       >
                         <FormControl>
                           <Checkbox
@@ -92,7 +92,7 @@ export function CheckBoxForm({
                             }}
                           />
                         </FormControl>
-                        <FormLabel className="font-normal py-1">
+                        <FormLabel className="text-base">
                           {label}
                         </FormLabel>
                       </FormItem>
