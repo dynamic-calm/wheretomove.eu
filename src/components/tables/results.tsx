@@ -27,7 +27,7 @@ export default function Results({
           <DataTable columns={columns} data={scores} />
           <div className="flex space-x-2">
             <Link href="/select">
-              <Button variant="outline" className="mb-14">
+              <Button className="mb-14">
                 Try again <ArrowLeftIcon className="ml-2" />
               </Button>
             </Link>

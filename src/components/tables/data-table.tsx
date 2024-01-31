@@ -65,7 +65,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="flex h-auto flex-col justify-around md:w-[30rem] lg:w-[auto] lg:min-w-[28rem]">
+    <div className="flex h-auto flex-col justify-around md:w-[30rem] lg:w-auto lg:min-w-[28rem]">
       <div className="flex items-center justify-start py-4">
         <Input
           placeholder="Filter countries..."
@@ -89,13 +89,18 @@ export function DataTable<TData, TValue>({
                 return (
                   <DropdownMenuCheckboxItem
                     key={column.id}
-                    className="capitalize"
                     checked={column.getIsVisible()}
                     onCheckedChange={(value) =>
                       column.toggleVisibility(!!value)
                     }
                   >
-                    {column.id}
+                    {[...column.id].flatMap((char, index) =>
+                      index === 0
+                        ? char.toUpperCase()
+                        : char === char.toUpperCase()
+                          ? [" ", char]
+                          : char,
+                    )}
                   </DropdownMenuCheckboxItem>
                 );
               })}

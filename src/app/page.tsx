@@ -21,7 +21,7 @@ export default async function Home() {
         </p>
 
         <FlagCarousel />
-        <Link href="/select" className="py-3">
+        <Link href="/select" className="py-5">
           <Button>Get Started</Button>
         </Link>
       </div>
