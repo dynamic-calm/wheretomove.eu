@@ -11,8 +11,8 @@ export default async function Home() {
   const data = await getAllData();
 
   return (
-    <div className="flex w-auto max-w-[22.5rem] flex-grow flex-col items-center justify-between md:max-w-[40rem]">
-      <div className="flex flex-col items-center justify-between gap-2 pt-20">
+    <div className="flex w-auto max-w-[22.5rem] flex-grow flex-col items-center justify-evenly md:max-w-[40rem]">
+      <div className="flex flex-col items-center justify-between gap-2 pt-auto">
         <h1 className="scroll-m-20 text-center text-4xl font-extrabold  lg:text-5xl">
           Where should I move?
         </h1>
