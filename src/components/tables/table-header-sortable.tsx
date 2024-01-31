@@ -33,7 +33,7 @@ export default function HeaderSortable({
         {year && (
           <Badge
             variant="outline"
-            className="mx-2 p-0.5 text-[10px] text-neutral-900 dark:text-neutral-200"
+            className="mx-2 p-0.5 text-[10px] text-neutral-900 dark:text-neutral-100"
           >
             {year}
           </Badge>
