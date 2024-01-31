@@ -29,11 +29,16 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={cn(
-          "bg-neutral-950 flex min-h-screen flex-col overflow-x-hidden font-sans leading-tight tracking-tighter antialiased",
+          "flex min-h-screen flex-col overflow-x-hidden font-sans leading-tight tracking-tighter antialiased dark:bg-neutral-950",
           fontSans.variable,
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <div className="flex h-screen flex-col items-center justify-between">
             <Header />
             {children}

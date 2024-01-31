@@ -45,8 +45,8 @@ export function CheckBoxForm({
     toast({
       title: "You submitted the following values:",
       description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-neutral-950 p-4">
-          <code className="text-white">{JSON.stringify(items, null, 2)}</code>
+        <pre className="mt-2 w-[340px] rounded-md dark:bg-neutral-950 p-4">
+          <code className="dark:text-white">{JSON.stringify(items, null, 2)}</code>
         </pre>
       ),
     });
