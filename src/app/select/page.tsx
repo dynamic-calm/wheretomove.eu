@@ -1,5 +1,6 @@
 "use client";
 
+import Mdiv from "@/components/motion-div";
 import { CheckBoxForm } from "@/components/checkbox-form";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CONFIG } from "@/config";
@@ -16,15 +17,16 @@ export default function Start() {
     </div>
   );
 
-
   return (
     <>
       <Suspense fallback={fallBack}>
-        <CheckBoxForm
-          title="What matters"
-          description="Select what you value the most in a country."
-          items={CONFIG}
-        />
+        <Mdiv>
+          <CheckBoxForm
+            title="What matters"
+            description="Select what you value the most in a country."
+            items={CONFIG}
+          />
+        </Mdiv>
       </Suspense>
     </>
   );
