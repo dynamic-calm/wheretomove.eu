@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { z } from "zod";
 
 import { IDS, type Ids, type Config } from "@/config";
-import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -42,17 +41,6 @@ export function CheckBoxForm({
   });
 
   function onSubmit({ items }: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md p-4 dark:bg-neutral-950">
-          <code className="dark:text-white">
-            {JSON.stringify(items, null, 2)}
-          </code>
-        </pre>
-      ),
-    });
-
     const params = new URLSearchParams(items.map((item) => ["dataIds", item]));
     router.push(`/result?${params.toString()}`);
   }
