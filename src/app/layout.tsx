@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={cn(
-          "flex min-h-screen flex-col overflow-x-hidden font-sans leading-tight tracking-tighter antialiased dark:bg-neutral-950",
+          "min-w-screen leading-tigher flex min-h-screen flex-col overflow-x-hidden font-sans antialiased dark:bg-neutral-950",
           fontSans.variable,
         )}
       >
@@ -39,7 +39,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex h-screen flex-col items-center justify-between">
+          <div className="flex h-screen w-screen flex-col items-center justify-between tracking-tighter">
             <Header />
             {children}
             <Footer />
