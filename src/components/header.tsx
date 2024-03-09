@@ -27,7 +27,9 @@ export default function Header() {
                 width={40}
                 alt="eu stars"
               />
-              <h1 className="pl-1 text-lg font-semibold">wheretomove.eu</h1>
+              <h1 className="pl-1 text-lg font-semibold  text-slate-950 dark:text-slate-50 ">
+                wheretomove.eu
+              </h1>
             </div>
           </Link>
           <ModeToggle />
