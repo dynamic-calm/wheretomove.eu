@@ -20,7 +20,7 @@ export default function FlagCarousel() {
       ]}
       className="mx-auto w-screen max-w-sm py-24 md:max-w-xl lg:max-w-6xl"
     >
-      <CarouselContent>
+      <CarouselContent className=" cursor-pointer">
         {[...COUNTRIES].map(([country, emoji]) => (
           <CarouselItem
             key={country}
