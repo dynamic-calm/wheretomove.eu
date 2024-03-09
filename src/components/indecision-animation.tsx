@@ -28,16 +28,12 @@ export default function IndecisionAnimation() {
           "#64748B", // slate-500
           "#475569", // slate-600
         ],
-        scale: [0.5, 1, 1, 1, 0.5],
-        rotate: [0, 0, 180, 180, 0],
+        rotate: [0, 360, 0],
         borderRadius: ["20%", "20%", "50%", "50%", "20%"],
       }}
       transition={{
-        duration: 6,
         repeat: Infinity,
-        ease: "easeInOut",
-        repeatDelay: 1,
-        type: "tween",
+        duration: 5
       }}
     >
       <p className="text-7xl">?</p>
