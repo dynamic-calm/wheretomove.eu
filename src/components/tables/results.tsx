@@ -47,7 +47,7 @@ export default function Results({
             <p className="dark:text-slate- text-xl text-slate-500 dark:text-slate-300">
               You should move to...
             </p>
-            <p className="text-6xl font-bold">
+            <p className="text-center text-6xl font-bold">
               {`${scores.at(0)?.country}! `}
               <span className="text-5xl">{COUNTRIES.get(countryName!)}</span>
             </p>

@@ -32,7 +32,7 @@ export default function LandingPage({ data }: { data: Country[] }) {
         <motion.div
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          exit={{ opacity: 0, filter: "blur(3px)" }}
           transition={{ duration: 1 }}
         >
           <div className="flex flex-grow flex-col items-center justify-evenly">
