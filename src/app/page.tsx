@@ -15,7 +15,7 @@ export default async function Home() {
       <div className="flex flex-col items-center justify-between gap-2 py-6 pt-11">
         <Mdiv>
           <h1 className="pb-11 text-center text-4xl font-bold tracking-tighter text-slate-950 dark:text-slate-50 lg:text-7xl ">
-            Where should I move?
+            Where Should I Move?
           </h1>
         </Mdiv>
         <Mdiv>
