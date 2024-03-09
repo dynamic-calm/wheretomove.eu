@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header>
-      <div className="mx-auto w-screen max-w-6xl">
+      <div className="mx-auto w-screen max-w-6xl pb-6">
         <div className="flex items-center justify-between p-4">
           <Link href="/">
             <div className="flex cursor-pointer items-center">

@@ -18,7 +18,7 @@ export default function FlagCarousel() {
           delay: 2000,
         }),
       ]}
-      className="mx-auto w-screen max-w-sm py-10 md:max-w-xl lg:max-w-6xl"
+      className="mx-auto w-screen max-w-sm py-24 md:max-w-xl lg:max-w-6xl"
     >
       <CarouselContent>
         {[...COUNTRIES].map(([country, emoji]) => (
