@@ -6,6 +6,8 @@ import { z } from "zod";
 import { IDS, type Ids, type Config } from "@/config";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { ButtonLoading } from "@/components/button-loading";
+
 import {
   Form,
   FormControl,
@@ -15,6 +17,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { useState } from "react";
 
 const FormSchema = z.object({
   items: z.array(z.string()).refine((value) => value.length > 1, {
@@ -32,6 +35,7 @@ export function CheckBoxForm({
   items: Record<Ids, Config>;
 }) {
   const router = useRouter();
+  const [isClicked, setIsClicked] = useState(false);
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -42,6 +46,7 @@ export function CheckBoxForm({
 
   function onSubmit({ items }: z.infer<typeof FormSchema>) {
     const params = new URLSearchParams(items.map((item) => ["dataIds", item]));
+    setIsClicked(true);
     router.push(`/result?${params.toString()}`);
   }
 
@@ -54,10 +59,8 @@ export function CheckBoxForm({
           render={() => (
             <FormItem>
               <div className="mb-4">
-                <FormLabel className="text-2xl">{title}</FormLabel>
-                <FormDescription className="text-lg">
-                  {description}
-                </FormDescription>
+                <FormLabel>{title}</FormLabel>
+                <FormDescription>{description}</FormDescription>
               </div>
               {Object.entries(items).map(([id, { checkBoxDescription }]) => (
                 <FormField
@@ -84,9 +87,7 @@ export function CheckBoxForm({
                             }}
                           />
                         </FormControl>
-                        <FormLabel className="text-base">
-                          {checkBoxDescription}
-                        </FormLabel>
+                        <FormLabel>{checkBoxDescription}</FormLabel>
                       </FormItem>
                     );
                   }}
@@ -96,7 +97,7 @@ export function CheckBoxForm({
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        {!isClicked ? <Button type="submit">Submit</Button> : <ButtonLoading />}
       </form>
     </Form>
   );
