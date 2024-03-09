@@ -26,10 +26,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth bg-slate-50" suppressHydrationWarning>
       <body
         className={cn(
-          "min-w-screen leading-tigher flex min-h-screen flex-col overflow-x-hidden font-sans antialiased dark:bg-slate-950",
+          "min-w-screen leading-tigher flex min-h-screen flex-col overflow-x-hidden font-sans antialiased bg-slate-50 dark:bg-slate-950",
           fontSans.variable,
         )}
       >
@@ -39,7 +39,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex h-screen w-screen flex-col items-center justify-between tracking-tighter">
+          <div className="flex flex-grow w-screen flex-col items-center justify-between tracking-tighter">
             <Header />
             {children}
             <Footer />

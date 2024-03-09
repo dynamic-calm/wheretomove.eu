@@ -22,13 +22,15 @@ export default async function Home() {
           <DataTable columns={columns} data={data} />
         </Mdiv>
         <Mdiv>
-          <p className="py-5 text-xl text-slate-500 dark:text-slate-400 lg:text-2xl lg:font-medium">
+          <p className="py-3 text-xl text-slate-500 dark:text-slate-400 lg:text-2xl lg:font-medium">
             Discover your ideal country based on data.
           </p>
         </Mdiv>
         <Mdiv>
           <Link href="/select" className="">
-            <Button>Get Started</Button>
+            <Button size="lg" className="font-semibold">
+              Get Started
+            </Button>
           </Link>
         </Mdiv>
         <Mdiv>

@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 
 export default function Footer() {
   return (
-    <footer className="flex h-10 items-center justify-center pb-10 pt-6 ">
-      <div className="flex w-96 max-w-2xl items-center justify-center text-xl">
+    <footer className="flex h-28 w-screen items-center justify-center">
+      <div className="flex items-center justify-center">
         <Link
           target="_blank"
           href="https://github.com/MateoPresaCastro/wheretomove.eu"
@@ -13,10 +13,10 @@ export default function Footer() {
           <Button
             variant="link"
             size="sm"
-            className="text-sm leading-tight tracking-tighter text-slate-500 dark:text-slate-400"
+            className="text-sm leading-tight tracking-tighter text-slate-400 dark:text-slate-500"
           >
-            <FaGithub className="text-x dar" />
-            <p className="pl-2 ">By Mateo Presa Castro</p>
+            <FaGithub />
+            <p className="pl-2">By Mateo Presa</p>
           </Button>
         </Link>
       </div>
