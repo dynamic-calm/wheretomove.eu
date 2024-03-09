@@ -44,7 +44,7 @@ export default function Results({
       ) : (
         <Mdiv key={midKey}>
           <div className="flex flex-col items-center justify-center gap-2">
-            <p className="dark:text-neutral- text-xl text-neutral-500 dark:text-neutral-300">
+            <p className="dark:text-slate- text-xl text-slate-500 dark:text-slate-300">
               You should move to...
             </p>
             <p className="text-6xl font-bold">
