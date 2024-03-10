@@ -74,7 +74,7 @@ export default function LandingPage({ data }: { data: Country[] }) {
                     </Mdiv>
                     <Mdiv>
                       <p className="w-80 pb-5 text-xl text-slate-500 dark:text-slate-400 lg:text-2xl lg:font-medium">
-                        Weight your choices, leverage algorithms.
+                        Weight your choices.
                       </p>
                     </Mdiv>
                     <Mdiv>
