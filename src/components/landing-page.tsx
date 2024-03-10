@@ -32,7 +32,7 @@ export default function LandingPage({ data }: { data: Country[] }) {
         <motion.div
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0, filter: "blur(3px)" }}
+          exit={{ opacity: 0, filter: "blur(2px)" }}
           transition={{ duration: 1 }}
         >
           <div className="flex flex-grow flex-col items-center justify-evenly">
@@ -66,14 +66,14 @@ export default function LandingPage({ data }: { data: Country[] }) {
             <div className="flex h-auto w-screen flex-col items-center justify-center gap-2 bg-slate-100 py-6 dark:bg-slate-900">
               <div className="flex flex-col items-center justify-center space-y-10 py-16 md:flex-row md:space-x-12 lg:space-x-32">
                 <Mdiv>
-                  <div className="flex w-96 flex-col items-center justify-evenly md:w-60 md:items-start lg:w-96">
+                  <div className="flex w-96 flex-col items-center justify-evenly text-center md:w-60 md:items-start md:text-left lg:w-96">
                     <Mdiv>
-                      <h1 className="mdtext-left pb-2 pt-5 text-4xl font-bold tracking-tighter text-slate-950 dark:text-slate-50 lg:text-6xl lg:leading-none">
+                      <h1 className="pb-2 pt-5 text-4xl font-bold tracking-tighter text-slate-950 dark:text-slate-50 lg:text-6xl lg:leading-none">
                         Decide
                       </h1>
                     </Mdiv>
                     <Mdiv>
-                      <p className="pb-5 text-xl text-slate-500 dark:text-slate-400 lg:text-2xl lg:font-medium">
+                      <p className="w-80 pb-5 text-xl text-slate-500 dark:text-slate-400 lg:text-2xl lg:font-medium">
                         Weight your choices, leverage algorithms.
                       </p>
                     </Mdiv>
