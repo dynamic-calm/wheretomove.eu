@@ -1,6 +1,7 @@
 "use client";
 import Autoplay from "embla-carousel-autoplay";
 import { COUNTRIES } from "@/config";
+
 import {
   Carousel,
   CarouselContent,
