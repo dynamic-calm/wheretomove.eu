@@ -3,16 +3,15 @@ export const EUROSTAT_HOST =
 
 export const IDS = {
   SALARY: "salary",
-  UNEMPLOYMENT: "unemployment",
   LIFE_SATISFACTION: "lifeSatisfaction",
-  FINANCIAL_SATISFACTION: "financialSatisfaction",
-  GREEN_ZONES: "greenZones",
+  UNEMPLOYMENT: "unemployment",
+  // FINANCIAL_SATISFACTION: "financialSatisfaction",
   RISK_OF_POVERTY: "peopleAtRiskOfPoverty",
   HOUSING_COSTS_OVERBURDEN_RATE: "housingCostsOverburdenRate",
   COL: "costOfLiving",
   GDP_PER_CAPITA: "gdpPerCapita",
   VIOLENCE: "violence",
-  RELATIONSHIPS_SATISFACTION: "relationshipsSatisfaction",
+  // RELATIONSHIPS_SATISFACTION: "relationshipsSatisfaction",
 } as const;
 
 export type Ids = (typeof IDS)[keyof typeof IDS];
@@ -31,7 +30,7 @@ export interface EuroStatArgs {
   params: Record<string, string>;
   unit: string;
 }
-export const CONFIG: Record<Ids, Config> = {
+export const CONFIG: Record<string, Config> = {
   [IDS.SALARY]: {
     checkBoxDescription: "High income",
     weight: 1,
@@ -62,7 +61,6 @@ export const CONFIG: Record<Ids, Config> = {
       params: {
         time: "2022",
         unit: "RTG",
-        indic_wb: "LIFESAT",
         isced11: "TOTAL",
         sex: "T",
         age: "Y_GE16",
@@ -90,46 +88,26 @@ export const CONFIG: Record<Ids, Config> = {
       unit: "PC_ACT",
     },
   },
-  [IDS.FINANCIAL_SATISFACTION]: {
-    checkBoxDescription: "Financial satisfaction",
-    weight: 1,
-    range: {
-      min: 0,
-      max: 10,
-    },
-    euroStatArgs: {
-      params: {
-        time: "2018",
-        unit: "RTG",
-        indic_wb: "FINSAT",
-        isced11: "TOTAL",
-        sex: "T",
-        age: "Y_GE16",
-      },
-      dataSetCode: "ilc_pw01",
-      unit: "-",
-    },
-  },
-  [IDS.GREEN_ZONES]: {
-    range: {
-      min: 0,
-      max: 10,
-    },
-    checkBoxDescription: "Quality of green zones",
-    weight: 1,
-    euroStatArgs: {
-      params: {
-        time: "2013",
-        unit: "RTG",
-        indic_wb: "GREENSAT",
-        isced11: "TOTAL",
-        sex: "T",
-        age: "Y_GE16",
-      },
-      dataSetCode: "ilc_pw01",
-      unit: "-",
-    },
-  },
+  // [IDS.FINANCIAL_SATISFACTION]: {
+  //   checkBoxDescription: "Financial satisfaction",
+  //   weight: 1,
+  //   range: {
+  //     min: 0,
+  //     max: 10,
+  //   },
+  //   euroStatArgs: {
+  //     params: {
+  //       time: "2018",
+  //       unit: "RTG",
+  //       indic_wb: "FINSAT",
+  //       isced11: "TOTAL",
+  //       sex: "T",
+  //       age: "Y_GE16",
+  //     },
+  //     dataSetCode: "ilc_pw01",
+  //     unit: "-",
+  //   },
+  // },
   [IDS.RISK_OF_POVERTY]: {
     checkBoxDescription: "Low number of people at risk of poverty",
     weight: -1,
@@ -216,26 +194,25 @@ export const CONFIG: Record<Ids, Config> = {
       unit: "PC",
     },
   },
-  [IDS.RELATIONSHIPS_SATISFACTION]: {
-    checkBoxDescription: "Great personal relationships",
-    weight: 1,
-    range: {
-      min: 0,
-      max: 10,
-    },
-    euroStatArgs: {
-      params: {
-        time: "2018",
-        unit: "RTG",
-        indic_wb: "RELSAT",
-        isced11: "TOTAL",
-        sex: "T",
-        age: "Y_GE16",
-      },
-      dataSetCode: "ilc_pw01",
-      unit: "-",
-    },
-  },
+  // [IDS.RELATIONSHIPS_SATISFACTION]: {
+  //   checkBoxDescription: "Great personal relationships",
+  //   weight: 1,
+  //   range: {
+  //     min: 0,
+  //     max: 10,
+  //   },
+  //   euroStatArgs: {
+  //     params: {
+  //       time: "2018",
+  //       unit: "RTG",
+  //       isced11: "TOTAL",
+  //       sex: "T",
+  //       age: "Y_GE16",
+  //     },
+  //     dataSetCode: "ilc_pw01",
+  //     unit: "-",
+  //   },
+  // },
 };
 
 export const COUNTRIES = new Map([

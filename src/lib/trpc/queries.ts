@@ -19,6 +19,7 @@ function generateQuery({ dataSetCode, params, unit, id }: QueryArgs) {
     const parsedParams = new URLSearchParams(params);
     const filter = toFilter(params);
     const url = `${EUROSTAT_HOST}/${dataSetCode}?${parsedParams.toString()}`;
+    console.log({ url });
     const jst = await JSONstat(url);
     const data = jst
       .Dataset(0)
