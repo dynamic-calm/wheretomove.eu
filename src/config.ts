@@ -5,13 +5,11 @@ export const IDS = {
   SALARY: "salary",
   LIFE_SATISFACTION: "lifeSatisfaction",
   UNEMPLOYMENT: "unemployment",
-  // FINANCIAL_SATISFACTION: "financialSatisfaction",
   RISK_OF_POVERTY: "peopleAtRiskOfPoverty",
   HOUSING_COSTS_OVERBURDEN_RATE: "housingCostsOverburdenRate",
   COL: "costOfLiving",
   GDP_PER_CAPITA: "gdpPerCapita",
   VIOLENCE: "violence",
-  // RELATIONSHIPS_SATISFACTION: "relationshipsSatisfaction",
 } as const;
 
 export type Ids = (typeof IDS)[keyof typeof IDS];

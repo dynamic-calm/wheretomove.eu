@@ -91,48 +91,6 @@ export const columns: ColumnDef<Country>[] = [
       return <div className="text-right">{amount}</div>;
     },
   },
-  // {
-  //   id: IDS.FINANCIAL_SATISFACTION,
-  //   accessorFn: (row) => row.data.financialSatisfaction?.value ?? null,
-  //   header: ({ column }) => (
-  //     <HeaderSortable
-  //       text="Financial satisfaction"
-  //       column={column}
-  //       year={getYear(column)}
-  //     />
-  //   ),
-
-  //   cell: ({ row }) => {
-  //     const value = row.getValue(IDS.FINANCIAL_SATISFACTION) as string;
-  //     if (!value) {
-  //       return <div className="text-right">-</div>;
-  //     }
-
-  //     const amount = parseFloat(value);
-  //     return <div className="text-right">{amount}</div>;
-  //   },
-  // },
-  // {
-  //   id: IDS.GREEN_ZONES,
-  //   accessorFn: (row) => row.data.greenZones?.value ?? null,
-  //   header: ({ column }) => (
-  //     <HeaderSortable
-  //       text="Green zones"
-  //       column={column}
-  //       year={getYear(column)}
-  //     />
-  //   ),
-
-  //   cell: ({ row }) => {
-  //     const value = row.getValue(IDS.GREEN_ZONES) as string;
-  //     if (!value) {
-  //       return <div className="text-right">-</div>;
-  //     }
-
-  //     const amount = parseFloat(value);
-  //     return <div className="text-right">{amount}</div>;
-  //   },
-  // },
   {
     id: IDS.RISK_OF_POVERTY,
     accessorFn: (row) => row.data.peopleAtRiskOfPoverty?.value ?? null,
@@ -271,25 +229,4 @@ export const columns: ColumnDef<Country>[] = [
       return <div className="text-right">{formatted}</div>;
     },
   },
-  // {
-  //   id: IDS.RELATIONSHIPS_SATISFACTION,
-  //   accessorFn: (row) => row.data.relationshipsSatisfaction?.value ?? null,
-  //   header: ({ column }) => (
-  //     <HeaderSortable
-  //       text="Personal relationships satisfaction"
-  //       column={column}
-  //       year={getYear(column)}
-  //     />
-  //   ),
-
-  //   cell: ({ row }) => {
-  //     const value = row.getValue(IDS.RELATIONSHIPS_SATISFACTION) as string;
-  //     if (!value) {
-  //       return <div className="text-right">-</div>;
-  //     }
-
-  //     const amount = parseFloat(value);
-  //     return <div className="text-right">{amount}</div>;
-  //   },
-  // },
 ];
