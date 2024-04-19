@@ -17,32 +17,32 @@ export const columns: ColumnDef<Country>[] = [
     header: () => <p className="text-xs">Country</p>,
     enableHiding: false,
   },
-  // {
-  //   id: IDS.UNEMPLOYMENT,
-  //   accessorFn: (row) => row.data.unemployment?.value ?? null,
-  //   header: ({ column }) => (
-  //     <HeaderSortable
-  //       text="Unemployment rate"
-  //       column={column}
-  //       year={getYear(column)}
-  //     />
-  //   ),
+  {
+    id: IDS.UNEMPLOYMENT,
+    accessorFn: (row) => row.data.unemployment?.value ?? null,
+    header: ({ column }) => (
+      <HeaderSortable
+        text="Unemployment rate"
+        column={column}
+        year={getYear(column)}
+      />
+    ),
 
-  //   cell: ({ row }) => {
-  //     const value = row.getValue(IDS.UNEMPLOYMENT) as string;
-  //     if (!value) {
-  //       return <div className="text-right">-</div>;
-  //     }
+    cell: ({ row }) => {
+      const value = row.getValue(IDS.UNEMPLOYMENT) as string;
+      if (!value) {
+        return <div className="text-right">-</div>;
+      }
 
-  //     const amount = parseFloat(value);
-  //     const formatted = new Intl.NumberFormat("es-ES", {
-  //       style: "percent",
-  //       minimumFractionDigits: 1,
-  //     }).format(amount / 100);
+      const amount = parseFloat(value);
+      const formatted = new Intl.NumberFormat("es-ES", {
+        style: "percent",
+        minimumFractionDigits: 1,
+      }).format(amount / 100);
 
-  //     return <div className="text-right">{formatted}</div>;
-  //   },
-  // },
+      return <div className="text-right">{formatted}</div>;
+    },
+  },
   {
     id: IDS.SALARY,
     accessorFn: (row) => row.data.salary?.value ?? null,

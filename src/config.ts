@@ -86,26 +86,6 @@ export const CONFIG: Record<string, Config> = {
       unit: "PC_ACT",
     },
   },
-  // [IDS.FINANCIAL_SATISFACTION]: {
-  //   checkBoxDescription: "Financial satisfaction",
-  //   weight: 1,
-  //   range: {
-  //     min: 0,
-  //     max: 10,
-  //   },
-  //   euroStatArgs: {
-  //     params: {
-  //       time: "2018",
-  //       unit: "RTG",
-  //       indic_wb: "FINSAT",
-  //       isced11: "TOTAL",
-  //       sex: "T",
-  //       age: "Y_GE16",
-  //     },
-  //     dataSetCode: "ilc_pw01",
-  //     unit: "-",
-  //   },
-  // },
   [IDS.RISK_OF_POVERTY]: {
     checkBoxDescription: "Low number of people at risk of poverty",
     weight: -1,
@@ -192,25 +172,6 @@ export const CONFIG: Record<string, Config> = {
       unit: "PC",
     },
   },
-  // [IDS.RELATIONSHIPS_SATISFACTION]: {
-  //   checkBoxDescription: "Great personal relationships",
-  //   weight: 1,
-  //   range: {
-  //     min: 0,
-  //     max: 10,
-  //   },
-  //   euroStatArgs: {
-  //     params: {
-  //       time: "2018",
-  //       unit: "RTG",
-  //       isced11: "TOTAL",
-  //       sex: "T",
-  //       age: "Y_GE16",
-  //     },
-  //     dataSetCode: "ilc_pw01",
-  //     unit: "-",
-  //   },
-  // },
 };
 
 export const COUNTRIES = new Map([
