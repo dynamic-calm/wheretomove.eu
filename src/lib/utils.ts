@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
-import { serverClient } from "@/lib/trpc/client";
 import { CONFIG, type Ids } from "@/config";
 import { type ClassValue, clsx } from "clsx";
+import { getData } from "@/lib/data";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -20,7 +20,7 @@ type CountryData = Record<
   }
 >;
 
-type AllData = Awaited<ReturnType<typeof serverClient.getData>>[];
+type AllData = Awaited<ReturnType<typeof getData>>[];
 
 export function transformData(allData: AllData): Country[] {
   const countryMap = allData.reduce<Record<string, CountryData>>(
