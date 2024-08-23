@@ -11,7 +11,7 @@ export default function Header() {
   return (
     <header>
       <motion.div
-        className="max-w-8xl mx-auto w-screen pb-6"
+        className="max-w-8xl mx-auto w-screen py-3"
         initial={{ opacity: 0, translateY: 0 }}
         whileInView={{ opacity: 1, translateY: -10 }}
         transition={{ type: "spring" }}
