@@ -19,14 +19,11 @@ export default function FlagCarousel() {
           delay: 2000,
         }),
       ]}
-      className="mx-auto w-screen max-w-sm py-24 md:max-w-xl lg:max-w-6xl"
+      className="mx-auto w-80 pb-10"
     >
-      <CarouselContent className=" cursor-pointer">
+      <CarouselContent className="cursor-pointer">
         {[...COUNTRIES].map(([country, emoji]) => (
-          <CarouselItem
-            key={country}
-            className="basis-1/6 text-4xl md:basis-1/5 md:text-6xl lg:basis-1/6 lg:text-7xl "
-          >
+          <CarouselItem key={country} className="basis-2/12 text-4xl">
             {emoji}
           </CarouselItem>
         ))}

@@ -1,13 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import euLight from "../../public/eu-light.png";
 import euDark from "../../public/eu-dark.png";
 import ModeToggle from "./mode-toggle";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Header() {
   return (
     <header>
-      <div className="mx-auto w-screen max-w-6xl pb-6">
+      <motion.div
+        className="max-w-8xl mx-auto w-screen pb-6"
+        initial={{ opacity: 0, translateY: 0 }}
+        whileInView={{ opacity: 1, translateY: -10 }}
+        transition={{ type: "spring" }}
+      >
         <div className="flex items-center justify-between p-4">
           <Link href="/">
             <div className="flex cursor-pointer items-center">
@@ -34,7 +42,7 @@ export default function Header() {
           </Link>
           <ModeToggle />
         </div>
-      </div>
+      </motion.div>
     </header>
   );
 }
