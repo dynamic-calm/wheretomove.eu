@@ -8,26 +8,26 @@ export default function IndecisionAnimation() {
         className="flex h-48 w-48 items-center justify-center md:h-48 md:w-48 lg:h-96 lg:w-96"
         animate={{
           backgroundColor: [
-            "#E2E8F0", // slate-200
-            "#CBD5E1", // slate-300
-            "#94A3B8", // slate-400
-            "#64748B", // slate-500
-            "#475569", // slate-600
-            "#64748B", // slate-500
-            "#94A3B8", // slate-400
-            "#CBD5E1", // slate-300
-            "#E2E8F0", // slate-200
+            "#E2E8F0", // neutral-200
+            "#CBD5E1", // neutral-300
+            "#94A3B8", // neutral-400
+            "#64748B", // neutral-500
+            "#475569", // neutral-600
+            "#64748B", // neutral-500
+            "#94A3B8", // neutral-400
+            "#CBD5E1", // neutral-300
+            "#E2E8F0", // neutral-200
           ],
           color: [
-            "#475569", // slate-600
-            "#64748B", // slate-500
-            "#94A3B8", // slate-400
-            "#CBD5E1", // slate-300
-            "#E2E8F0", // slate-200
-            "#CBD5E1", // slate-300
-            "#94A3B8", // slate-400
-            "#64748B", // slate-500
-            "#475569", // slate-600
+            "#475569", // neutral-600
+            "#64748B", // neutral-500
+            "#94A3B8", // neutral-400
+            "#CBD5E1", // neutral-300
+            "#E2E8F0", // neutral-200
+            "#CBD5E1", // neutral-300
+            "#94A3B8", // neutral-400
+            "#64748B", // neutral-500
+            "#475569", // neutral-600
           ],
           rotate: [0, 360, 0],
           borderRadius: ["20%", "20%", "50%", "50%", "20%"],

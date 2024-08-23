@@ -15,7 +15,7 @@ export default function Error({
   toast({
     title: "Error:",
     description: (
-      <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+      <pre className="mt-2 w-[340px] rounded-md bg-neutral-950 p-4">
         <code className="text-red-600">
           {error.message}
           {error.digest ? (

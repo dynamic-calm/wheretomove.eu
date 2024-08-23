@@ -119,7 +119,7 @@ export function DataTable<TData, TValue>({
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-        <div className="h-[37rem] rounded-lg border dark:border-slate-700">
+        <div className="h-[37rem] rounded-lg border dark:border-neutral-700">
           <Table>
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (
@@ -139,13 +139,13 @@ export function DataTable<TData, TValue>({
                 </TableRow>
               ))}
             </TableHeader>
-            <TableBody className="dark:border-slate-700">
+            <TableBody className="dark:border-neutral-700">
               {table.getRowModel().rows?.length ? (
                 table.getRowModel().rows.map((row) => (
                   <TableRow
                     key={row.id}
                     data-state={row.getIsSelected() && "selected"}
-                    className="font-medium dark:border-slate-700"
+                    className="font-medium dark:border-neutral-700"
                   >
                     {row.getVisibleCells().map((cell) => (
                       <TableCell key={cell.id} className="min-w-16 max-w-16">
