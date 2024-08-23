@@ -4,7 +4,7 @@ import eurostat from "../../public/eurostat.png";
 
 export default async function PoweredByEuroStat() {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center pt-14">
       <p className="text-neutral-500">Data powered by</p>
       <Link target="_blank" href="https://ec.europa.eu/eurostat">
         <Image

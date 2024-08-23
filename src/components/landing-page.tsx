@@ -47,7 +47,7 @@ export default function LandingPage({ data }: { data: Country[] }) {
                 <DataTable columns={columns} data={data} />
               </Mdiv>
               <Mdiv>
-                <p className="py-3 text-xl text-neutral-500 dark:text-neutral-400 lg:text-2xl lg:font-medium">
+                <p className="py-3 text-lg text-neutral-500 dark:text-neutral-400 lg:text-xl lg:font-medium">
                   Discover your ideal country based on data.
                 </p>
               </Mdiv>
